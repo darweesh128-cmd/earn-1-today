@@ -1,0 +1,12 @@
+Field,Value
+Invoice #,INV-001
+Date,YYYY-MM-DD
+Seller Name,
+Seller IBAN,
+Buyer Name,
+Service Description,Digital product / freelance service
+Amount (SAR),4
+Amount (USD),1
+Payment Method,Bank transfer / STC Pay
+Status,Unpaid
+Notes,Product delivered after payment confirmation
