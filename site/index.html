@@ -3,35 +3,98 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>WhatsApp Captions Pack — $1</title>
-  <meta name="description" content="Bilingual AR/EN WhatsApp Business captions + mini invoice pack. $1 via crypto checkout."/>
+  <title>Client Close Kit — WhatsApp AR/EN + Invoice ($5)</title>
+  <meta name="description" content="40 bilingual WhatsApp sales captions + printable invoice + quote templates for freelancers. Pay via PayPal.me — instant download."/>
+  <meta property="og:title" content="Client Close Kit — $5"/>
+  <meta property="og:description" content="Close WhatsApp clients faster. AR/EN captions, invoice, quote, 7-day follow-up."/>
   <style>
-    body{font-family:system-ui,sans-serif;max-width:640px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#111}
-    .card{border:1px solid #ddd;border-radius:12px;padding:1.25rem;margin:1rem 0}
-    .price{font-size:1.75rem;font-weight:700}
-    a.btn{display:inline-block;background:#0b5;color:#fff;text-decoration:none;padding:.75rem 1.25rem;border-radius:8px;font-weight:600}
-    a.btn:hover{background:#094}
-    code{background:#f4f4f4;padding:.1rem .3rem;border-radius:4px}
+    :root{--bg:#f8fafc;--ink:#0f172a;--muted:#64748b;--card:#fff;--line:#e2e8f0;--brand:#0f766e;--brand2:#115e59;--paypal:#0070ba}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+    .wrap{max-width:720px;margin:0 auto;padding:2rem 1.1rem 4rem}
+    header{margin-bottom:1.5rem}
+    h1{font-size:clamp(1.5rem,4vw,2rem);line-height:1.2;margin:0 0 .5rem}
+    .lead{color:var(--muted);font-size:1.05rem;margin:0}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 1.35rem;margin:1rem 0;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+    .price{font-size:2rem;font-weight:800;letter-spacing:-.02em}
+    .price span{font-size:1rem;font-weight:600;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:0;border-radius:10px;padding:.85rem 1.2rem;font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer}
+    .btn-paypal{background:var(--paypal);color:#fff}
+    .btn-paypal:hover{filter:brightness(1.06)}
+    .btn-brand{background:var(--brand);color:#fff}
+    .btn-brand:hover{background:var(--brand2)}
+    .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    ul{margin:.4rem 0 0;padding-left:1.15rem}
+    li{margin:.25rem 0}
+    .muted{color:var(--muted);font-size:.92rem}
+    .row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+    .badge{display:inline-block;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;border-radius:999px;padding:.2rem .65rem;font-size:.8rem;font-weight:600}
+    #unlock{display:none;margin-top:1rem;padding:1rem;border-radius:12px;background:#ecfdf5;border:1px solid #a7f3d0}
+    code{background:#f1f5f9;padding:.1rem .35rem;border-radius:4px;font-size:.9em}
+    footer{margin-top:2rem;color:var(--muted);font-size:.85rem}
   </style>
 </head>
 <body>
-  <h1>WhatsApp Business Captions + Invoice Pack</h1>
-  <p>Bilingual <strong>Arabic / English</strong> ready-to-send captions for small Gulf/MENA shops, plus a simple invoice CSV template.</p>
-  <div class="card">
-    <div class="price">$1.00</div>
-    <p>Pay with crypto (USDC / SOL and other assets Suby supports). Settles to the merchant Solana USDC wallet.</p>
-    <p><a class="btn" href="https://checkout.suby.fi/p/pro_j2b6qq84weq359rt3of1fl4p" rel="noopener">Pay $1 — open checkout</a></p>
-    <p>Product on Suby: <em>Wahid membership</em> (same $1 one-time SKU; delivery of this pack on request with payment proof).</p>
+  <div class="wrap">
+    <header>
+      <span class="badge">Instant digital download</span>
+      <h1>Client Close Kit</h1>
+      <p class="lead">40 bilingual <strong>Arabic / English</strong> WhatsApp captions + printable invoice + quote + ethical 7-day follow-up — for freelancers closing international buyers.</p>
+    </header>
+
+    <div class="card">
+      <div class="price">$5 <span>USD one-time</span></div>
+      <p class="muted">Personal PayPal receive — no store signup required for the buyer. Pay to <strong>@MohammedAldarwesh</strong> (Mohammed Aldarwesh).</p>
+      <div class="row">
+        <a class="btn btn-paypal" id="payBtn" href="https://www.paypal.com/paypalme/MohammedAldarwesh/5" target="_blank" rel="noopener">Pay $5 with PayPal</a>
+        <button class="btn btn-ghost" type="button" id="paidBtn">I've paid — unlock download</button>
+      </div>
+      <div id="unlock">
+        <p><strong>Thanks.</strong> Download your pack:</p>
+        <p><a class="btn btn-brand" href="client-close-kit-v1.zip" download>Download Client Close Kit (ZIP)</a></p>
+        <p class="muted">In PayPal note, please write: <code>CLIENT-CLOSE-KIT</code> so the payment is easy to match.</p>
+      </div>
+      <p class="muted" style="margin-top:1rem">Alternate crypto checkout ($1 legacy SKU): <a href="https://checkout.suby.fi/p/pro_j2b6qq84weq359rt3of1fl4p" rel="noopener">Suby USDC</a> — then download the same ZIP above.</p>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0;font-size:1.15rem">What's inside</h2>
+      <ul>
+        <li>40 WhatsApp captions (CSV) — qualify, quote, deliver, collect payment, follow-up</li>
+        <li>Printable invoice HTML → Save as PDF</li>
+        <li>CSV invoice fields for Sheets/Excel</li>
+        <li>Project quote HTML template</li>
+        <li>7-day soft follow-up sequence (anti-spam rules included)</li>
+        <li>USD pricing card for international clients</li>
+      </ul>
+      <p class="muted">Free preview (3 captions): <a href="sample-captions.csv">sample-captions.csv</a></p>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0;font-size:1.15rem">How it works</h2>
+      <ol>
+        <li>Pay <strong>$5</strong> via PayPal.me (button above).</li>
+        <li>Click <em>I've paid — unlock download</em> for instant ZIP delivery (self-serve).</li>
+        <li>Customize placeholders and start sending.</li>
+      </ol>
+      <p class="muted">Seller is a KSA-based freelancer receiving to a personal PayPal handle — not acting as a card merchant of record on this page.</p>
+    </div>
+
+    <footer>
+      Seller: Mohammed Aldarwesh · PayPal <code>@MohammedAldarwesh</code><br/>
+      Pack version: v1 · Hosted as a static page · Legal digital goods only
+    </footer>
   </div>
-  <div class="card">
-    <h2>What you get</h2>
-    <ul>
-      <li>Bilingual WhatsApp caption set (CSV)</li>
-      <li>Mini invoice / receipt template (CSV)</li>
-      <li>AR + EN listing blurbs</li>
-    </ul>
-    <p>Sample freebie preview: see repo <code>product/</code> files. Full pack after payment.</p>
-  </div>
-  <p style="color:#666;font-size:.9rem">Seller: The Adhud / Mohamad Darweesh · Checkout hosted by Suby (Merchant of Record for crypto path).</p>
+  <script>
+    (function(){
+      var unlock=document.getElementById('unlock');
+      var paidBtn=document.getElementById('paidBtn');
+      var payBtn=document.getElementById('payBtn');
+      function show(){ unlock.style.display='block'; try{localStorage.setItem('cck_paid_v1','1')}catch(e){} }
+      if(localStorage.getItem('cck_paid_v1')==='1') show();
+      paidBtn.addEventListener('click', show);
+      payBtn.addEventListener('click', function(){ setTimeout(show, 2500); });
+    })();
+  </script>
 </body>
 </html>

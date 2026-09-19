@@ -1,16 +1,14 @@
-# $1 digital pack — WhatsApp captions (AR/EN) + invoice template
+# Client Close Kit — $5 (PayPal.me)
 
-Zero-friction crypto checkout (Suby):
+**Sell page:** https://darweesh128-cmd.github.io/earn-1-today/  
+**Alt repo Pages:** https://darweesh128-cmd.github.io/client-close-kit/  
+**Pay:** https://www.paypal.com/paypalme/MohammedAldarwesh/5  
+**Note for PayPal:** `CLIENT-CLOSE-KIT`
 
-**Pay $1:** https://checkout.suby.fi/p/pro_j2b6qq84weq359rt3of1fl4p
+## Product
+40 bilingual WhatsApp captions + printable invoice + quote + 7-day follow-up.
 
-Sell page: https://darweesh128-cmd.github.io/earn-1-today/
+ZIP: `docs/client-close-kit-v1.zip` (also on the sell page after payment unlock).
 
-## Contents (`product/`)
-- Bilingual WhatsApp Business captions (CSV)
-- Mini invoice template (CSV)
-- AR/EN listing blurbs
-
-After payment, download `product/` from this repo (or open an issue with payment proof if you need a re-send).
-
-Merchant: The Adhud · Settles to configured Solana USDC payout wallet via Suby crypto path.
+## Legacy
+Previous $1 Suby crypto SKU still live: https://checkout.suby.fi/p/pro_j2b6qq84weq359rt3of1fl4p
