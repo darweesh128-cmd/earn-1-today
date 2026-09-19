@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Client Close Kit — Close WhatsApp Clients Faster ($5)</title>
+  <title>Client Close Kit — Close WhatsApp Clients Faster ($5 or $1)</title>
   <meta name="description" content="40 bilingual Arabic/English WhatsApp sales captions plus printable invoice, quote template, and 7-day follow-up. Built for freelancers closing international buyers. $5 via PayPal.me — instant ZIP."/>
   <meta name="keywords" content="WhatsApp sales captions, freelancer invoice template, Arabic English sales scripts, client close kit, PayPal digital download"/>
   <link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/"/>
@@ -23,14 +23,25 @@
     "name":"Client Close Kit v1",
     "description":"40 bilingual WhatsApp sales captions plus printable invoice, quote template, pricing card, and 7-day follow-up for freelancers.",
     "brand":{"@type":"Brand","name":"Mohammed Aldarwesh"},
-    "offers":{
-      "@type":"Offer",
-      "price":"5.00",
-      "priceCurrency":"USD",
-      "availability":"https://schema.org/InStock",
-      "url":"https://darweesh128-cmd.github.io/client-close-kit/",
-      "seller":{"@type":"Person","name":"Mohammed Aldarwesh"}
-    }
+    "offers":[
+      {
+        "@type":"Offer",
+        "name":"Client Close Kit — standard",
+        "price":"5.00",
+        "priceCurrency":"USD",
+        "availability":"https://schema.org/InStock",
+        "url":"https://www.paypal.com/paypalme/MohammedAldarwesh/5"
+      },
+      {
+        "@type":"Offer",
+        "name":"Client Close Kit — starter",
+        "price":"1.00",
+        "priceCurrency":"USD",
+        "availability":"https://schema.org/InStock",
+        "url":"https://www.paypal.com/paypalme/MohammedAldarwesh/1"
+      }
+    ],
+    "seller":{"@type":"Person","name":"Mohammed Aldarwesh"}
   }
   </script>
   <style>
@@ -83,11 +94,13 @@
 
     <div class="card hero">
       <div class="price">$5 <span>USD · one-time · keep forever</span></div>
+      <p style="margin:.35rem 0 0" class="muted">or start at <strong>$1</strong> (same ZIP) if you want lower friction.</p>
       <p style="margin:.55rem 0 0">Pay via personal PayPal to <strong>@MohammedAldarwesh</strong> — no buyer account signup beyond PayPal itself. Unlock the ZIP on this page right after.</p>
       <div class="note"><strong>Before you pay:</strong> in the PayPal note / message field write <code>CLIENT-CLOSE-KIT</code> so the payment is easy to match.</div>
       <div class="row">
         <a class="btn btn-paypal" id="payBtn" href="https://www.paypal.com/paypalme/MohammedAldarwesh/5" target="_blank" rel="noopener">Pay $5 with PayPal.me</a>
-        <button class="btn btn-ghost" type="button" id="paidBtn">I've paid — unlock download</button>
+        <a class="btn btn-ghost" id="payBtn1" href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">Pay $1 (starter)</a>
+        <button class="btn btn-brand" type="button" id="paidBtn">I've paid — unlock download</button>
       </div>
       <div id="unlock">
         <p><strong>Thanks for supporting independent digital goods.</strong> Your pack:</p>
@@ -95,6 +108,11 @@
         <p class="muted">If the note was missing, still download — just reply on PayPal with <code>CLIENT-CLOSE-KIT</code> when you can.</p>
       </div>
       <p class="muted" style="margin-top:1rem">Prefer crypto? Legacy <strong>$1</strong> USDC checkout: <a href="https://checkout.suby.fi/p/pro_j2b6qq84weq359rt3of1fl4p" rel="noopener">Suby (Solana USDC)</a> — then unlock the same ZIP above.</p>
+    </div>
+
+    <div class="card">
+      <h2>Free tool</h2>
+      <p>Try the <a href="invoice-generator.html"><strong>browser invoice generator</strong></a> (print to PDF, no signup). The full kit adds 40 WhatsApp captions + quote + follow-up.</p>
     </div>
 
     <div class="card">
@@ -130,7 +148,7 @@
     <div class="card">
       <h2>How checkout works</h2>
       <ol>
-        <li>Click <strong>Pay $5 with PayPal.me</strong> (add note <code>CLIENT-CLOSE-KIT</code>).</li>
+        <li>Click <strong>Pay $5</strong> or <strong>Pay $1 (starter)</strong> with PayPal.me (add note <code>CLIENT-CLOSE-KIT</code>).</li>
         <li>Return here and click <em>I've paid — unlock download</em> (or wait ~2s after the PayPal click — the download appears automatically).</li>
         <li>Open the ZIP, replace placeholders (name / rate / deliverable), start sending.</li>
       </ol>
@@ -156,8 +174,8 @@
         <p class="muted">Because this is an instant digital download under $10, treat it as final once unlocked. If the ZIP fails to open, message via PayPal with your txn id and the seller will re-send the file.</p>
       </details>
       <details>
-        <summary>Is there a cheaper crypto option?</summary>
-        <p class="muted">Yes — the linked Suby USDC checkout is a legacy <strong>$1</strong> SKU for the same ZIP.</p>
+        <summary>Is there a cheaper option?</summary>
+        <p class="muted">Yes — PayPal.me <strong>$1 starter</strong> unlocks the same ZIP (please still use note <code>CLIENT-CLOSE-KIT</code>). Crypto: the linked Suby USDC checkout is also a legacy <strong>$1</strong> SKU.</p>
       </details>
     </div>
 
@@ -180,10 +198,13 @@
       var unlock=document.getElementById('unlock');
       var paidBtn=document.getElementById('paidBtn');
       var payBtn=document.getElementById('payBtn');
+      var payBtn1=document.getElementById('payBtn1');
       function show(){ unlock.style.display='block'; try{localStorage.setItem('cck_paid_v1','1')}catch(e){} }
       if(localStorage.getItem('cck_paid_v1')==='1') show();
       paidBtn.addEventListener('click', show);
-      payBtn.addEventListener('click', function(){ setTimeout(show, 2500); });
+      function arm(){ setTimeout(show, 2500); }
+      payBtn.addEventListener('click', arm);
+      if(payBtn1) payBtn1.addEventListener('click', arm);
     })();
   </script>
 </body>

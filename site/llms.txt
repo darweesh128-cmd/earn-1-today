@@ -1,0 +1,8 @@
+# Client Close Kit
+> Bilingual WhatsApp sales captions + invoice/quote templates for freelancers.
+
+- Sell page: https://darweesh128-cmd.github.io/earn-1-today/
+- Free invoice generator: https://darweesh128-cmd.github.io/earn-1-today/invoice-generator.html
+- PayPal $5: https://www.paypal.com/paypalme/MohammedAldarwesh/5 (note CLIENT-CLOSE-KIT)
+- PayPal $1: https://www.paypal.com/paypalme/MohammedAldarwesh/1 (note CLIENT-CLOSE-KIT)
+- GitHub: https://github.com/darweesh128-cmd/earn-1-today
