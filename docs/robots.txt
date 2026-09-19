@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://darweesh128-cmd.github.io/earn-1-today/sitemap.xml
