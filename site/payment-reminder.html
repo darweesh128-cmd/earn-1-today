@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Late Payment Reminder Email Generator — Client Close Kit</title>
+<meta name="description" content="Write a polite late-payment reminder email for freelancers in seconds. No signup. Runs in your browser."/>
+<style>
+  :root { --bg:#0f1419; --card:#1a2332; --text:#e7ecf3; --muted:#9aa7b8; --accent:#3d9cf0; --ok:#3ecf8e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+  main { max-width:720px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:1.4rem; margin:0 0 8px; }
+  p.lead { color:var(--muted); margin:0 0 20px; }
+  .card { background:var(--card); border-radius:12px; padding:16px; margin-bottom:16px; }
+  label { display:block; font-size:.85rem; color:var(--muted); margin:10px 0 4px; }
+  input, select, textarea { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #2a384c; background:#121a24; color:var(--text); font:inherit; }
+  textarea { min-height:220px; resize:vertical; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:560px){ .row { grid-template-columns:1fr; } }
+  button { margin-top:14px; background:var(--accent); color:#041018; border:0; border-radius:8px; padding:10px 16px; font-weight:600; cursor:pointer; }
+  button.secondary { background:#2a384c; color:var(--text); margin-left:8px; }
+  a { color:var(--accent); }
+  .ok { color:var(--ok); font-size:.9rem; }
+  footer { margin-top:24px; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Late payment reminder email</h1>
+  <p class="lead">Polite freelancer follow-up copy. Everything stays in your browser — no signup, no server upload.</p>
+  <div class="card">
+    <div class="row">
+      <div>
+        <label for="yourName">Your name</label>
+        <input id="yourName" placeholder="Alex Rivera" value="Alex Rivera"/>
+      </div>
+      <div>
+        <label for="clientName">Client name</label>
+        <input id="clientName" placeholder="Jordan Lee" value="Jordan Lee"/>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="invoice">Invoice #</label>
+        <input id="invoice" placeholder="INV-1042" value="INV-1042"/>
+      </div>
+      <div>
+        <label for="amount">Amount due</label>
+        <input id="amount" placeholder="$850" value="$850"/>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="dueDate">Original due date</label>
+        <input id="dueDate" placeholder="2026-09-01" value="2026-09-01"/>
+      </div>
+      <div>
+        <label for="tone">Tone</label>
+        <select id="tone">
+          <option value="friendly">Friendly first nudge</option>
+          <option value="firm">Firm second notice</option>
+          <option value="final">Final notice (still polite)</option>
+        </select>
+      </div>
+    </div>
+    <label for="project">Project / work summary</label>
+    <input id="project" placeholder="Website redesign — final milestone" value="Website redesign — final milestone"/>
+    <button type="button" id="gen">Generate email</button>
+    <button type="button" class="secondary" id="copy">Copy</button>
+    <span id="copied" class="ok" hidden>Copied</span>
+  </div>
+  <div class="card">
+    <label for="out">Email draft</label>
+    <textarea id="out" readonly></textarea>
+  </div>
+  <footer>
+    Free tool from <a href="./">Client Close Kit</a> ·
+    Also: <a href="./invoice-generator.html">invoice</a> ·
+    <a href="./quote-generator.html">quote</a> ·
+    <a href="./rate-calculator.html">rate calculator</a>
+  </footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function draft(){
+  const you=$('yourName').value.trim()||'Freelancer';
+  const client=$('clientName').value.trim()||'there';
+  const inv=$('invoice').value.trim()||'the invoice';
+  const amt=$('amount').value.trim()||'the outstanding balance';
+  const due=$('dueDate').value.trim()||'the due date';
+  const proj=$('project').value.trim()||'our recent work';
+  const tone=$('tone').value;
+  let body='';
+  if(tone==='friendly'){
+    body=`Hi ${client},\n\nHope you're well. Quick nudge on invoice ${inv} (${amt}) for ${proj}, originally due ${due}.\n\nIf payment is already on the way, thank you — feel free to ignore this. If anything is blocking payment on your side, reply and I'll help unblock it.\n\nThanks so much,\n${you}`;
+  } else if(tone==='firm'){
+    body=`Hi ${client},\n\nFollowing up again on overdue invoice ${inv} for ${amt} (${proj}). The original due date was ${due}.\n\nCould you confirm when payment will be sent, or let me know if you need a revised invoice / different payment method?\n\nAppreciate a quick update today if possible.\n\nBest,\n${you}`;
+  } else {
+    body=`Hi ${client},\n\nThis is a final polite notice regarding invoice ${inv} (${amt}) for ${proj}, due ${due} and still unpaid.\n\nPlease arrange payment within 5 business days, or reply with a written payment plan. If I don't hear back, I'll pause further work and escalate per our agreement.\n\nHappy to resolve this quickly — just reply.\n\nRegards,\n${you}`;
+  }
+  const subject = tone==='friendly'
+    ? `Friendly reminder: invoice ${inv} (${amt})`
+    : tone==='firm'
+      ? `Second notice: invoice ${inv} overdue`
+      : `Final notice: invoice ${inv} outstanding`;
+  $('out').value = `Subject: ${subject}\n\n${body}`;
+}
+$('gen').onclick=draft;
+$('copy').onclick=async()=>{
+  draft();
+  try{ await navigator.clipboard.writeText($('out').value); $('copied').hidden=false; setTimeout(()=>$('copied').hidden=true,1500);}catch(e){ $('out').select(); document.execCommand('copy'); }
+};
+draft();
+</script>
+</body>
+</html>

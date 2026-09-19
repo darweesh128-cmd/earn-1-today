@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Freelancer Quote / Estimate Generator</title>
+<meta name="description" content="Free browser quote generator for freelancers. Print to PDF. No signup. Arabic + English friendly."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/quote-generator.html"/>
+<style>
+  :root { --bg:#0f1419; --card:#1a2332; --text:#e7ecf3; --muted:#9aa8bc; --accent:#3d9cf0; --line:#2a3548; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
+  main { max-width:720px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { font-size:1.45rem; margin:0 0 8px; }
+  p.lead { color:var(--muted); margin:0 0 20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:16px; }
+  label { display:block; font-size:.85rem; color:var(--muted); margin:10px 0 4px; }
+  input, textarea { width:100%; background:#0d1218; color:var(--text); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font:inherit; }
+  textarea { min-height:72px; resize:vertical; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:560px){ .row { grid-template-columns:1fr; } }
+  button { background:var(--accent); color:#061018; border:0; border-radius:8px; padding:12px 16px; font-weight:700; cursor:pointer; margin-top:12px; }
+  button.secondary { background:transparent; color:var(--accent); border:1px solid var(--accent); margin-left:8px; }
+  a { color:var(--accent); }
+  #preview { white-space:pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.92rem; }
+  .upsell { font-size:.9rem; color:var(--muted); }
+  @media print {
+    body { background:#fff; color:#000; }
+    .no-print { display:none !important; }
+    .card { border:0; padding:0; }
+    #preview { white-space:pre-wrap; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Free quote / estimate generator</h1>
+  <p class="lead">Fill the fields, print to PDF. Nothing is uploaded. For WhatsApp client closes, the full Client Close Kit also has 40 bilingual captions.</p>
+  <div class="card no-print">
+    <div class="row">
+      <div><label>Your name / business</label><input id="from" value="Freelance Studio"/></div>
+      <div><label>Client name</label><input id="to" value="Client Co."/></div>
+    </div>
+    <div class="row">
+      <div><label>Project title</label><input id="title" value="Website landing page"/></div>
+      <div><label>Valid until</label><input id="valid" type="date"/></div>
+    </div>
+    <label>Scope (one line per deliverable)</label>
+    <textarea id="scope">Discovery call
+Design mockups (2 rounds)
+Responsive build
+Handoff + 7-day support</textarea>
+    <div class="row">
+      <div><label>Price (USD)</label><input id="price" value="850"/></div>
+      <div><label>Timeline</label><input id="time" value="10 business days"/></div>
+    </div>
+    <label>Payment terms</label>
+    <input id="terms" value="50% to start · 50% on delivery"/>
+    <div>
+      <button type="button" id="gen">Update preview</button>
+      <button type="button" class="secondary" id="print">Print / Save PDF</button>
+    </div>
+  </div>
+  <div class="card"><div id="preview"></div></div>
+  <p class="upsell no-print">Need bilingual WhatsApp close scripts + invoice pack? <a href="./">Client Close Kit</a> — $1 or $5 via PayPal.me (note CLIENT-CLOSE-KIT). Free invoice twin: <a href="./invoice-generator.html">invoice generator</a>.</p>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+function render(){
+  const d = new Date().toISOString().slice(0,10);
+  if(!$('valid').value) $('valid').value = new Date(Date.now()+14*864e5).toISOString().slice(0,10);
+  const scope = $('scope').value.split(/\n+/).filter(Boolean).map(l=>'• '+l.trim()).join('\n');
+  $('preview').textContent =
+`QUOTE / ESTIMATE
+Date: ${d}
+Valid until: ${$('valid').value}
+
+From: ${$('from').value}
+To: ${$('to').value}
+
+Project: ${$('title').value}
+Timeline: ${$('time').value}
+
+Scope:
+${scope}
+
+Investment: USD ${$('price').value}
+Terms: ${$('terms').value}
+
+This quote is an estimate. Scope changes may adjust price.
+Generated locally in your browser — Client Close Kit free tools.`;
+}
+$('gen').onclick = render;
+$('print').onclick = () => { render(); window.print(); };
+['from','to','title','valid','scope','price','time','terms'].forEach(id => $(id).addEventListener('input', render));
+render();
+</script>
+</body>
+</html>
