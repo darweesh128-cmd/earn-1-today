@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Client Intake Form — Client Close Kit</title>
+<meta name="description" content="Create a printable client / project intake questionnaire in your browser: goals, budget, timeline, decision makers, assets, success metrics. No signup, no backend."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/client-intake-form.html"/>
+<meta property="og:title" content="Free Client Intake Form — Client Close Kit"/>
+<meta property="og:description" content="Freelance project intake questionnaire generator. Browser-only, MIT, printable."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/client-intake-form.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429;--paypal:#0070ba}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding-bottom:72px}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px}h1{font-size:1.45rem;margin:0 0 8px}h2{font-size:1.05rem;margin:0 0 10px}.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:760px){.row,.row3{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}textarea{min-height:88px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}.warn{background:#2a2410;border:1px solid #5a4a18;color:#f0d78c;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+.preview{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:18px;min-height:320px}.preview h3{margin:0 0 4px;font-size:1.25rem}.preview-head{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}.preview small{color:var(--muted)}.preview .q{margin:14px 0;padding-top:10px;border-top:1px dashed var(--line)}.preview .q:first-of-type{border-top:0;padding-top:0}.sig-box{border-top:1px solid var(--line);padding-top:8px;min-height:56px;margin-top:24px}footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paypal);color:#fff;box-shadow:0 -6px 24px rgba(0,0,0,.35);padding:.65rem 1rem}
+.sticky-cta .inner{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+.sticky-cta p{margin:0;font-size:.9rem;font-weight:600}.sticky-cta a{display:inline-block;background:#fff;color:var(--paypal);text-decoration:none;font-weight:700;padding:.55rem .9rem;border-radius:8px}
+@media print{body{background:#fff;color:#000;padding-bottom:0}main{max-width:none;padding:0}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#actions,.warn,.sticky-cta{display:none!important}.preview{border:0;background:#fff;color:#000;padding:0}.preview small{color:#555}.preview .q{border-color:#ccc}.sig-box{border-color:#999}}
+</style>
+</head>
+<body>
+<main>
+<h1>Client intake form</h1>
+<p class="lead">Send prospects a clear project intake questionnaire before you quote: goals, audience, budget band, timeline, decision makers, assets, constraints, and success metrics. Print or save as PDF. Runs only in your browser. Template only — not consulting or legal advice.</p>
+<div class="warn"><strong>Disclaimer:</strong> Educational template only. Adapt wording for your industry and jurisdiction. Do not collect more personal data than you need; follow applicable privacy rules.</div>
+<div class="card" id="formCard">
+  <h2>Form header</h2>
+  <div class="row"><div><label for="formNo">Intake #</label><input id="formNo" value="IN-001"/></div><div><label for="formDate">Date</label><input id="formDate" type="date"/></div></div>
+  <div class="row"><div><label for="freelancer">Freelancer / studio</label><input id="freelancer" value="Alex Rivera"/></div><div><label for="client">Client / company</label><input id="client" value="Acme Co."/></div></div>
+  <div class="row"><div><label for="contact">Primary contact</label><input id="contact" value="Sam Lee · sam@acme.example"/></div><div><label for="project">Working project title</label><input id="project" value="Website redesign"/></div></div>
+  <label for="intro">Intro note to client</label>
+  <textarea id="intro">Thanks for reaching out. Please answer these questions so we can scope accurately and send a fair quote. Takes about 10–15 minutes.</textarea>
+</div>
+<div class="card">
+  <h2>Intake questions (leave blank for client to fill, or prefill)</h2>
+  <label for="problem">1. What problem are you trying to solve?</label><textarea id="problem" placeholder="e.g. Our site converts poorly and feels outdated"></textarea>
+  <label for="goals">2. Primary goals / desired outcomes</label><textarea id="goals" placeholder="e.g. Increase demo requests, refresh brand, launch by Q4"></textarea>
+  <label for="audience">3. Target audience / users</label><textarea id="audience" placeholder="e.g. B2B SaaS buyers in GCC, English + Arabic"></textarea>
+  <div class="row3">
+    <div><label for="budget">4. Budget band (optional)</label><select id="budget"><option value="">(blank for client)</option><option>Under $1k</option><option>$1k–$3k</option><option>$3k–$8k</option><option>$8k–$20k</option><option>$20k+</option><option>Not sure yet</option></select></div>
+    <div><label for="timeline">5. Ideal start / deadline</label><input id="timeline" placeholder="e.g. Start Oct 1 · launch Nov 15"/></div>
+    <div><label for="decision">6. Decision maker(s)</label><input id="decision" placeholder="e.g. CEO + marketing lead"/></div>
+  </div>
+  <label for="deliverables">7. Expected deliverables</label><textarea id="deliverables" placeholder="e.g. Design system, 8 page templates, CMS training"></textarea>
+  <label for="assets">8. Assets you can provide</label><textarea id="assets" placeholder="e.g. Logo, brand guide, copy drafts, analytics access"></textarea>
+  <label for="constraints">9. Constraints / must-haves / must-nots</label><textarea id="constraints" placeholder="e.g. Must work on mobile; no WordPress; Arabic RTL required"></textarea>
+  <label for="success">10. How will we measure success?</label><textarea id="success" placeholder="e.g. +30% form fills in 60 days; Lighthouse &gt;90"></textarea>
+  <label for="competitors">11. Competitors / references (optional)</label><textarea id="competitors" placeholder="Links or names you like / dislike"></textarea>
+  <div class="row"><div><label for="priority">12. Top priority</label><select id="priority"><option value="">(blank for client)</option><option>Speed</option><option>Quality / polish</option><option>Lowest cost</option><option>Balanced</option></select></div><div><label for="followup">Preferred follow-up</label><input id="followup" placeholder="Email / WhatsApp / call · timezone"/></div></div>
+</div>
+<div class="card" id="actions">
+  <h2>Preview &amp; export</h2>
+  <button type="button" id="gen">Update preview</button><button type="button" class="secondary" id="save">Save draft</button><button type="button" class="secondary" id="copy">Copy text</button><button type="button" class="secondary" id="txt">Download TXT</button><button type="button" class="secondary" id="print">Print / save PDF</button><button type="button" class="danger" id="clear">Clear all</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Pair with <a href="project-brief.html">project brief</a>, <a href="quote-generator.html">quote</a>, and <a href="proposal-outline.html">proposal outline</a>. Tip the kit via <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me/MohammedAldarwesh/1</a>.</p>
+</div>
+<div class="card"><h2>Intake form preview</h2><div class="preview" id="out"></div></div>
+<footer>Free tool from <a href="./">Client Close Kit</a> · MIT · No signup · No backend · <a href="https://github.com/darweesh128-cmd/client-close-kit">Source</a> · Tips: <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me</a></footer>
+</main>
+<div class="sticky-cta" role="region" aria-label="PayPal support tip"><div class="inner"><p>Support / unlock tip $1 · note CLIENT-CLOSE-KIT</p><a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me $1</a></div></div>
+<script>
+(function(){
+  const KEY='cck-client-intake-v1',$=id=>document.getElementById(id),today=()=>new Date().toISOString().slice(0,10);
+  const fields=['formNo','formDate','freelancer','client','contact','project','intro','problem','goals','audience','budget','timeline','decision','deliverables','assets','constraints','success','competitors','priority','followup'];
+  $('formDate').value=today();
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s){fields.forEach(k=>{if(s[k]!=null)$(k).value=s[k]})}}catch(e){}
+  function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function persist(){const d={};fields.forEach(k=>d[k]=$(k).value);localStorage.setItem(KEY,JSON.stringify(d))}
+  function flash(t){$('msg').hidden=false;$('msg').textContent=t;setTimeout(()=>{$('msg').hidden=true},1500)}
+  function blank(s){return (s&&s.trim())?s:'________________________________'}
+  function text(){return ['CLIENT / PROJECT INTAKE','Intake #: '+($('formNo').value.trim()||'(not set)'),'Date: '+($('formDate').value||'(not set)'),'Freelancer: '+($('freelancer').value.trim()||'(not set)'),'Client: '+($('client').value.trim()||'(not set)'),'Contact: '+($('contact').value.trim()||'(not set)'),'Project: '+($('project').value.trim()||'(not set)'),'',$('intro').value.trim()||'','','1. Problem to solve:',blank($('problem').value),'','2. Goals / outcomes:',blank($('goals').value),'','3. Audience:',blank($('audience').value),'','4. Budget band: '+($('budget').value||'_____'),'5. Timeline: '+($('timeline').value.trim()||'_____'),'6. Decision makers: '+($('decision').value.trim()||'_____'),'','7. Deliverables:',blank($('deliverables').value),'','8. Assets available:',blank($('assets').value),'','9. Constraints:',blank($('constraints').value),'','10. Success metrics:',blank($('success').value),'','11. Competitors / references:',blank($('competitors').value),'','12. Top priority: '+($('priority').value||'Speed / Quality / Cost / Balanced'),'Follow-up preference: '+($('followup').value.trim()||'________________'),'','Client signature / name: ________________  Date: ________','','Template from Client Close Kit — not consulting or legal advice.'].join('\n')}
+  function renderPreview(){
+    const nl=s=>esc(s||'').replace(/\n/g,'<br>');
+    const b=s=>nl(blank(s));
+    $('out').innerHTML='<div class="preview-head"><div><h3>CLIENT INTAKE</h3><small>Project questionnaire before quote</small></div><div><strong>'+esc($('formNo').value||'IN-001')+'</strong><br><small>Date: '+esc($('formDate').value||'—')+'</small></div></div><p><small>Freelancer</small><br>'+esc($('freelancer').value||'—')+'</p><p><small>Client</small><br>'+esc($('client').value||'—')+'</p><p><small>Contact</small><br>'+esc($('contact').value||'—')+'</p><p><small>Project</small><br>'+esc($('project').value||'—')+'</p><p>'+nl($('intro').value)+'</p><div class="q"><small>1. What problem are you trying to solve?</small><br>'+b($('problem').value)+'</div><div class="q"><small>2. Primary goals / outcomes</small><br>'+b($('goals').value)+'</div><div class="q"><small>3. Target audience</small><br>'+b($('audience').value)+'</div><div class="q"><small>4. Budget band</small><br>'+esc($('budget').value||'Under $1k / $1–3k / $3–8k / $8–20k / $20k+ / Not sure')+'</div><div class="q"><small>5. Timeline</small><br>'+esc($('timeline').value.trim()||'________________')+'</div><div class="q"><small>6. Decision makers</small><br>'+esc($('decision').value.trim()||'________________')+'</div><div class="q"><small>7. Expected deliverables</small><br>'+b($('deliverables').value)+'</div><div class="q"><small>8. Assets you can provide</small><br>'+b($('assets').value)+'</div><div class="q"><small>9. Constraints / must-haves</small><br>'+b($('constraints').value)+'</div><div class="q"><small>10. Success metrics</small><br>'+b($('success').value)+'</div><div class="q"><small>11. Competitors / references</small><br>'+b($('competitors').value)+'</div><div class="q"><small>12. Top priority</small><br>'+esc($('priority').value||'Speed / Quality / Lowest cost / Balanced')+'</div><div class="q"><small>Follow-up preference</small><br>'+esc($('followup').value.trim()||'________________')+'</div><div class="sig-box"><small>Client signature / name · Date</small></div><p style="margin-top:16px"><small>Prepared with Client Close Kit. Adapt before collecting personal data.</small></p>'}
+  $('gen').onclick=()=>{renderPreview();flash('Preview updated')};$('save').onclick=()=>{persist();flash('Saved locally')};$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(text());flash('Copied text')}catch(e){flash('Copy unavailable — use TXT download')}};$('txt').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text()],{type:'text/plain'}));a.download=($('formNo').value||'client-intake')+'.txt';a.click();URL.revokeObjectURL(a.href)};$('print').onclick=()=>{renderPreview();window.print()};$('clear').onclick=()=>{if(confirm('Clear this intake form draft?')){localStorage.removeItem(KEY);location.reload()}};
+  fields.forEach(k=>$(k).addEventListener('input',()=>renderPreview()));renderPreview();
+})();
+</script>
+</body>
+</html>

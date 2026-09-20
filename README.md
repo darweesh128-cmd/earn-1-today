@@ -55,3 +55,4 @@ Personal and commercial use of the templates in your own client work. Do not res
 - Free client feedback form: https://darweesh128-cmd.github.io/earn-1-today/client-feedback-form.html
 - Free project brief generator: https://darweesh128-cmd.github.io/earn-1-today/project-brief.html
 - Free late fee / interest calculator: https://darweesh128-cmd.github.io/client-close-kit/late-fee-calculator.html
+- Free client / project intake form: https://darweesh128-cmd.github.io/client-close-kit/client-intake-form.html
