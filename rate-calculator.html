@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Freelancer Hourly Rate Calculator</title>
+<meta name="description" content="Free browser hourly rate calculator for freelancers. Set target income, billable hours, and tax buffer. No signup."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/rate-calculator.html"/>
+<style>
+body{font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:1.2rem;background:#f8fafc;color:#0f172a}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.2rem}
+label{display:block;font-size:.78rem;color:#64748b;margin:.55rem 0 .15rem}
+input{width:100%;padding:.55rem;border:1px solid #e2e8f0;border-radius:8px;box-sizing:border-box}
+.out{margin-top:1rem;padding:1rem;border-radius:10px;background:#ecfdf5;border:1px solid #a7f3d0}
+.big{font-size:1.8rem;font-weight:800;letter-spacing:-.02em}
+.banner{margin:1rem 0;padding:.8rem;background:#fff;border:1px solid #e2e8f0;border-radius:10px}
+a{color:#0f766e}
+</style></head><body>
+<h1>Free freelancer hourly rate calculator</h1>
+<p>Runs in your browser. No signup. Adjust the inputs; your suggested rate updates live.</p>
+<div class="card">
+<label>Target take-home per month (USD)</label>
+<input id="income" type="number" value="4000" min="0" step="100"/>
+<label>Billable hours per week</label>
+<input id="hours" type="number" value="25" min="1" step="1"/>
+<label>Weeks worked per year</label>
+<input id="weeks" type="number" value="48" min="1" step="1"/>
+<label>Tax / overhead buffer (%)</label>
+<input id="tax" type="number" value="30" min="0" max="80" step="1"/>
+<div class="out">
+<div>Suggested hourly rate</div>
+<div class="big">$<span id="rate">0.00</span></div>
+<p id="detail" style="margin:.4rem 0 0;color:#065f46;font-size:.92rem"></p>
+</div>
+</div>
+<div class="banner">Need bilingual WhatsApp close captions + invoice pack? See <a href="./">Client Close Kit</a> ($1 / $5 PayPal.me).</div>
+<script>
+function calc(){
+  const income=+document.getElementById('income').value||0;
+  const hours=+document.getElementById('hours').value||1;
+  const weeks=+document.getElementById('weeks').value||1;
+  const tax=(+document.getElementById('tax').value||0)/100;
+  const annual=income*12;
+  const gross=annual/(1-Math.min(tax,0.79));
+  const rate=gross/(hours*weeks);
+  document.getElementById('rate').textContent=rate.toFixed(2);
+  document.getElementById('detail').textContent=
+    `Based on $${annual.toLocaleString()} take-home / year across ${hours*weeks} billable hours, with ${Math.round(tax*100)}% buffer.`;
+}
+['income','hours','weeks','tax'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
+calc();
+</script>
+</body></html>
