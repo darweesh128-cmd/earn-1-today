@@ -7,3 +7,4 @@
 - PayPal $1: https://www.paypal.com/paypalme/MohammedAldarwesh/1 (note CLIENT-CLOSE-KIT)
 - GitHub: https://github.com/darweesh128-cmd/earn-1-today
 - Free timesheet: https://darweesh128-cmd.github.io/earn-1-today/timesheet.html
+- Free NDA / confidentiality outline: https://darweesh128-cmd.github.io/earn-1-today/nda-outline.html

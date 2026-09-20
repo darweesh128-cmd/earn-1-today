@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free NDA / Confidentiality Outline — Client Close Kit</title>
+<meta name="description" content="Generate a plain-language NDA / mutual confidentiality outline in your browser: parties, purpose, confidential categories, term, exclusions, return/destroy. Print, copy, TXT/MD. No signup. Template only — not legal advice."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/nda-outline.html"/>
+<meta property="og:title" content="Free NDA Outline — Client Close Kit"/>
+<meta property="og:description" content="Freelance NDA / confidentiality outline generator. Browser-only, MIT, printable. Not legal advice."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/nda-outline.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px} h1{font-size:1.45rem;margin:0 0 8px} h2{font-size:1.05rem;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:800px){.row,.row3{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}
+textarea{min-height:72px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}
+button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}
+.checks{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:8px}
+.checks label{display:flex;align-items:center;gap:8px;color:var(--text);font-size:.92rem;margin:0;cursor:pointer}
+.checks input{width:auto;accent-color:var(--accent)}
+.preview{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;background:#121a24;border:1px solid var(--line);border-radius:10px;padding:14px;min-height:280px}
+.warn{background:#2a2410;border:1px solid #5a4a18;color:#f0d78c;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+@media print{body{background:#fff;color:#000}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#actions,.warn{display:none}.preview{border:0;background:#fff;color:#000;font-size:12px}}
+</style>
+</head>
+<body>
+<main>
+<h1>NDA / confidentiality outline</h1>
+<p class="lead">Draft a plain-language mutual or one-way NDA outline for freelancers and clients. Runs only in your browser. Template only — not legal advice.</p>
+<div class="warn"><strong>Disclaimer:</strong> This is an educational outline, not a lawyer-reviewed contract. Have counsel review before signing, especially for regulated or high-value work.</div>
+
+<div class="card" id="formCard">
+  <h2>Parties &amp; basics</h2>
+  <div class="row">
+    <div><label for="docId">Document ID</label><input id="docId" value="NDA-001"/></div>
+    <div><label for="effective">Effective date</label><input id="effective" type="date"/></div>
+  </div>
+  <div class="row">
+    <div><label for="disclosing">Disclosing party</label><input id="disclosing" value="Acme Co."/></div>
+    <div><label for="receiving">Receiving party</label><input id="receiving" value="Alex Rivera (freelancer)"/></div>
+  </div>
+  <div class="row">
+    <div><label for="ndaType">NDA type</label>
+      <select id="ndaType">
+        <option value="mutual" selected>Mutual (both sides)</option>
+        <option value="oneway">One-way (disclosing → receiving)</option>
+      </select>
+    </div>
+    <div><label for="purpose">Purpose / project</label><input id="purpose" value="Website redesign proposal and discovery" placeholder="e.g. Proposal discussions for X"/></div>
+  </div>
+  <div class="row">
+    <div><label for="jurisdiction">Governing jurisdiction</label>
+      <select id="jurisdiction">
+        <option value="Saudi Arabia" selected>Saudi Arabia</option>
+        <option value="United Arab Emirates">United Arab Emirates</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="United States">United States</option>
+        <option value="Other">Other (specify below)</option>
+      </select>
+    </div>
+    <div><label for="jurisdictionOther">Other jurisdiction</label><input id="jurisdictionOther" placeholder="If Other selected"/></div>
+  </div>
+  <div class="row3">
+    <div><label for="termYears">Confidentiality term (years)</label><input id="termYears" type="number" min="1" max="20" step="1" value="3"/></div>
+    <div><label for="nonSolicit">Non-solicit (optional)</label>
+      <select id="nonSolicit">
+        <option value="none" selected>None</option>
+        <option value="6">6 months after end</option>
+        <option value="12">12 months after end</option>
+      </select>
+    </div>
+    <div><label for="lang">Language</label>
+      <select id="lang">
+        <option value="en">English</option>
+        <option value="both" selected>English + Arabic summary</option>
+        <option value="ar">Arabic primary</option>
+      </select>
+    </div>
+  </div>
+
+  <h2 style="margin-top:18px">Confidential information categories</h2>
+  <div class="checks" id="cats">
+    <label><input type="checkbox" data-cat="Business plans, pricing, and financials" checked/> Business / pricing / financials</label>
+    <label><input type="checkbox" data-cat="Technical designs, source code, and architecture" checked/> Tech / code / architecture</label>
+    <label><input type="checkbox" data-cat="Customer lists and personal data" checked/> Customers / personal data</label>
+    <label><input type="checkbox" data-cat="Marketing strategies and unpublished content"/> Marketing / unpublished content</label>
+    <label><input type="checkbox" data-cat="Trade secrets and know-how" checked/> Trade secrets / know-how</label>
+    <label><input type="checkbox" data-cat="Credentials, access keys, and infrastructure details" checked/> Credentials / access / infra</label>
+  </div>
+  <label for="catsExtra">Additional categories (one per line)</label>
+  <textarea id="catsExtra" placeholder="Optional extras"></textarea>
+
+  <h2 style="margin-top:18px">Exclusions &amp; obligations</h2>
+  <div class="checks" id="exclusions">
+    <label><input type="checkbox" data-ex="Information that is or becomes public through no fault of the receiving party" checked/> Public information</label>
+    <label><input type="checkbox" data-ex="Information independently developed without use of confidential information" checked/> Independently developed</label>
+    <label><input type="checkbox" data-ex="Information rightfully received from a third party without confidentiality duty" checked/> Rightfully from third party</label>
+    <label><input type="checkbox" data-ex="Information required to be disclosed by law, regulation, or court order (with prior notice where legally permitted)" checked/> Required by law</label>
+  </div>
+  <div class="checks" style="margin-top:12px">
+    <label><input type="checkbox" id="returnDestroy" checked/> Return or destroy confidential materials on written request</label>
+  </div>
+  <label for="notes">Extra clauses / notes</label>
+  <textarea id="notes" placeholder="e.g. residual knowledge, residual use, specific deliverables carve-out">Standard residual knowledge: general skills and experience retained in unaided memory are not restricted.</textarea>
+</div>
+
+<div class="card" id="actions">
+  <h2>Actions</h2>
+  <button type="button" id="gen">Generate outline</button>
+  <button type="button" class="secondary" id="copy">Copy text</button>
+  <button type="button" class="secondary" id="txt">Download TXT</button>
+  <button type="button" class="secondary" id="md">Download MD</button>
+  <button type="button" class="secondary" id="print">Print / PDF</button>
+  <button type="button" class="secondary" id="save">Save draft</button>
+  <button type="button" class="danger" id="clear">Clear</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Data stays in <strong>localStorage</strong>. Pair with <a href="scope-of-work.html">SOW</a>, <a href="proposal-outline.html">proposal</a>, and <a href="client-onboarding-checklist.html">onboarding</a>. Optional <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">$1 tip</a> (PayPal note <code>CLIENT-CLOSE-KIT</code>).</p>
+</div>
+
+<div class="card">
+  <h2>Preview</h2>
+  <div class="preview" id="out"></div>
+</div>
+
+<footer>
+  Free tool from <a href="./">Client Close Kit</a> · MIT · Template only — not legal advice ·
+  <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/5">PayPal.me $5 pack</a>
+</footer>
+</main>
+<script>
+(function(){
+  const KEY='cck-nda-outline-v1';
+  const $=id=>document.getElementById(id);
+  const fields=['docId','effective','disclosing','receiving','ndaType','purpose','jurisdiction','jurisdictionOther','termYears','nonSolicit','lang','catsExtra','notes'];
+  const today=()=>new Date().toISOString().slice(0,10);
+  $('effective').value=today();
+
+  function selectedCats(){
+    const list=[];
+    document.querySelectorAll('#cats input[type=checkbox]').forEach(cb=>{ if(cb.checked) list.push(cb.getAttribute('data-cat')); });
+    $('catsExtra').value.split(/\n/).map(s=>s.trim()).filter(Boolean).forEach(x=>list.push(x));
+    return list;
+  }
+  function selectedEx(){
+    const list=[];
+    document.querySelectorAll('#exclusions input[type=checkbox]').forEach(cb=>{ if(cb.checked) list.push(cb.getAttribute('data-ex')); });
+    return list;
+  }
+  function jur(){
+    const j=$('jurisdiction').value;
+    if(j==='Other') return ($('jurisdictionOther').value.trim()||'Other (unspecified)');
+    return j;
+  }
+  function bullets(arr, empty){
+    if(!arr.length) return [empty||'(none)'];
+    return arr.map(l=> '- '+l);
+  }
+
+  try{
+    const s=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(s){
+      fields.forEach(k=>{ if(s[k]!=null && $(k)) $(k).value=s[k]; });
+      if(s.cats) document.querySelectorAll('#cats input[type=checkbox]').forEach(cb=>{
+        cb.checked=s.cats.includes(cb.getAttribute('data-cat'));
+      });
+      if(s.ex) document.querySelectorAll('#exclusions input[type=checkbox]').forEach(cb=>{
+        cb.checked=s.ex.includes(cb.getAttribute('data-ex'));
+      });
+      if(typeof s.returnDestroy==='boolean') $('returnDestroy').checked=s.returnDestroy;
+    }
+  }catch(e){}
+
+  function persist(){
+    const data={};
+    fields.forEach(k=>data[k]=$(k).value);
+    data.cats=selectedCats().filter(c=>!(($('catsExtra').value||'').split(/\n/).map(s=>s.trim()).includes(c)));
+    // store checkbox cats only
+    data.cats=[];
+    document.querySelectorAll('#cats input[type=checkbox]').forEach(cb=>{ if(cb.checked) data.cats.push(cb.getAttribute('data-cat')); });
+    data.ex=[];
+    document.querySelectorAll('#exclusions input[type=checkbox]').forEach(cb=>{ if(cb.checked) data.ex.push(cb.getAttribute('data-ex')); });
+    data.returnDestroy=$('returnDestroy').checked;
+    localStorage.setItem(KEY,JSON.stringify(data));
+  }
+  function flash(t){
+    $('msg').hidden=false; $('msg').textContent=t||'Saved locally';
+    setTimeout(()=>{$('msg').hidden=true;$('msg').textContent='Saved locally';},1400);
+  }
+
+  function buildEN(){
+    const type=$('ndaType').value==='mutual'?'MUTUAL NON-DISCLOSURE / CONFIDENTIALITY OUTLINE':'ONE-WAY NON-DISCLOSURE / CONFIDENTIALITY OUTLINE';
+    const parties=$('ndaType').value==='mutual'
+      ? ('This outline contemplates mutual obligations between '+$('disclosing').value.trim()+' and '+$('receiving').value.trim()+'.')
+      : ($('disclosing').value.trim()+' (Disclosing Party) may share Confidential Information with '+$('receiving').value.trim()+' (Receiving Party).');
+    const ns=$('nonSolicit').value;
+    const nsLine=ns==='none'?'(none)':('Optional non-solicit: for '+ns+' months after the Purpose ends, neither party will knowingly solicit the other party\'s employees or exclusive contractors introduced solely through this engagement (general public recruiting excluded).');
+    const out=[
+      type,
+      'Document ID: '+$('docId').value.trim(),
+      'Effective date: '+$('effective').value,
+      'Governing jurisdiction: '+jur(),
+      '',
+      '1. PARTIES',
+      'Disclosing party: '+$('disclosing').value.trim(),
+      'Receiving party: '+$('receiving').value.trim(),
+      parties,
+      '',
+      '2. PURPOSE',
+      $('purpose').value.trim()||'(purpose not specified)',
+      '',
+      '3. CONFIDENTIAL INFORMATION',
+      'Confidential Information includes non-public information disclosed in connection with the Purpose in the following categories:',
+      ...bullets(selectedCats(),'(no categories selected)'),
+      '',
+      '4. OBLIGATIONS',
+      '- Use Confidential Information only for the Purpose.',
+      '- Protect it with at least reasonable care (and no less care than used for own similar information).',
+      '- Limit access to personnel with a need to know who are bound by confidentiality duties no less protective.',
+      '- Do not copy, reverse engineer, or disclose except as allowed here.',
+      $('returnDestroy').checked?'- On written request (or when the Purpose ends), promptly return or securely destroy Confidential Information and confirm in writing, except for routine backups or legal retention copies which remain subject to this outline.':'',
+      '',
+      '5. EXCLUSIONS',
+      'Obligations do not apply to information that:',
+      ...bullets(selectedEx(),'(no exclusions selected)'),
+      '',
+      '6. TERM',
+      'Confidentiality obligations continue for '+($('termYears').value||'3')+' year(s) from the Effective Date (or longer if required by law for trade secrets).',
+      '',
+      '7. NON-SOLICIT (OPTIONAL)',
+      nsLine,
+      '',
+      '8. NO LICENSE / NO WARRANTY',
+      'No intellectual property license is granted. Confidential Information is provided "as is" for evaluation related to the Purpose only.',
+      '',
+      '9. GOVERNING LAW',
+      'This outline is intended to be governed by the laws of '+jur()+'. Courts of that jurisdiction are the intended venue for disputes, subject to mandatory local rules.',
+      '',
+      '10. NOTES',
+      $('notes').value.trim()||'(none)',
+      '',
+      'SIGNATURE BLOCK (placeholder)',
+      'Disclosing party: ______________________  Date: __________',
+      'Receiving party:  ______________________  Date: __________',
+      '',
+      'Generated with Client Close Kit (template only — not legal advice)',
+      'https://darweesh128-cmd.github.io/client-close-kit/nda-outline.html'
+    ].filter(x=>x!=='');
+    return out.join('\n');
+  }
+  function buildAR(){
+    const type=$('ndaType').value==='mutual'?'ملخص اتفاقية عدم إفشاء متبادلة (مسودة)':'ملخص اتفاقية عدم إفشاء باتجاه واحد (مسودة)';
+    const ns=$('nonSolicit').value;
+    const nsLine=ns==='none'?'(لا يوجد)':('عدم استقطاب اختياري لمدة '+ns+' شهراً بعد انتهاء الغرض.');
+    const out=[
+      type,
+      'رقم المستند: '+$('docId').value.trim(),
+      'تاريخ السريان: '+$('effective').value,
+      'الاختصاص: '+jur(),
+      'الطرف المفصح: '+$('disclosing').value.trim(),
+      'الطرف المتلقي: '+$('receiving').value.trim(),
+      'الغرض: '+($('purpose').value.trim()||'(غير محدد)'),
+      '',
+      'فئات المعلومات السرية:',
+      ...bullets(selectedCats(),'(لا يوجد)'),
+      '',
+      'الاستثناءات:',
+      ...bullets(selectedEx(),'(لا يوجد)'),
+      '',
+      'مدة السرية: '+($('termYears').value||'3')+' سنة/سنوات',
+      'إعادة/إتلاف عند الطلب: '+($('returnDestroy').checked?'نعم':'لا'),
+      'عدم الاستقطاب: '+nsLine,
+      'ملاحظات: '+($('notes').value.trim()||'(لا يوجد)'),
+      '',
+      'تنبيه: هذه مسودة تعليمية وليست استشارة قانونية.'
+    ].filter(x=>x!=='');
+    return out.join('\n');
+  }
+  function render(){
+    const lang=$('lang').value;
+    let t='';
+    if(lang==='en') t=buildEN();
+    else if(lang==='ar') t=buildAR();
+    else t=buildEN()+'\n\n—— Arabic summary / ملخص عربي ——\n\n'+buildAR();
+    $('out').textContent=t;
+  }
+
+  $('gen').onclick=()=>{ persist(); render(); flash('Updated'); };
+  $('save').onclick=()=>{ persist(); render(); flash('Saved locally'); };
+  $('print').onclick=()=>{ persist(); render(); window.print(); };
+  $('clear').onclick=()=>{
+    if(!confirm('Clear all fields and local draft?')) return;
+    localStorage.removeItem(KEY);
+    fields.forEach(k=>{ if($(k).tagName==='TEXTAREA') $(k).value=''; });
+    $('docId').value='NDA-001';
+    $('disclosing').value='';
+    $('receiving').value='';
+    $('purpose').value='';
+    $('jurisdiction').value='Saudi Arabia';
+    $('jurisdictionOther').value='';
+    $('termYears').value='3';
+    $('nonSolicit').value='none';
+    $('ndaType').value='mutual';
+    $('lang').value='both';
+    $('effective').value=today();
+    document.querySelectorAll('#cats input,#exclusions input').forEach(cb=>cb.checked=true);
+    $('returnDestroy').checked=true;
+    render();
+    flash('Cleared');
+  };
+  $('copy').onclick=async()=>{
+    render();
+    const t=$('out').textContent;
+    try{await navigator.clipboard.writeText(t);}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+    flash('Copied');
+  };
+  $('txt').onclick=()=>{
+    render();
+    const blob=new Blob([$('out').textContent],{type:'text/plain;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='nda-outline.txt';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    flash('TXT ready');
+  };
+  $('md').onclick=()=>{
+    render();
+    const blob=new Blob(['# NDA outline\n\n```\n'+$('out').textContent+'\n```\n'],{type:'text/markdown;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='nda-outline.md';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    flash('MD ready');
+  };
+  fields.forEach(id=>{
+    $(id).addEventListener('input',()=>{ persist(); render(); });
+    $(id).addEventListener('change',()=>{ persist(); render(); });
+  });
+  document.querySelectorAll('#cats input,#exclusions input,#returnDestroy').forEach(el=>{
+    el.addEventListener('change',()=>{ persist(); render(); });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
