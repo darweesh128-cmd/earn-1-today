@@ -46,13 +46,17 @@ Personal and commercial use of the templates in your own client work. Do not res
 - Free credit note / invoice adjustment generator: https://darweesh128-cmd.github.io/client-close-kit/credit-note.html
 
 - Free certificate of completion / final delivery acceptance: https://darweesh128-cmd.github.io/client-close-kit/certificate-of-completion.html
+
 - Free purchase order generator: https://darweesh128-cmd.github.io/client-close-kit/purchase-order.html
 
 - Free payment receipt generator: https://darweesh128-cmd.github.io/client-close-kit/receipt-generator.html
+
 - Free work order / job ticket generator: https://darweesh128-cmd.github.io/client-close-kit/work-order.html
 
-- Free delivery note / packing slip: https://darweesh128-cmd.github.io/client-close-kit/delivery-note.html
-- Free client feedback form: https://darweesh128-cmd.github.io/earn-1-today/client-feedback-form.html
-- Free project brief generator: https://darweesh128-cmd.github.io/earn-1-today/project-brief.html
+- Free delivery note / packing slip generator: https://darweesh128-cmd.github.io/client-close-kit/delivery-note.html
+- Free client feedback / satisfaction form: https://darweesh128-cmd.github.io/client-close-kit/client-feedback-form.html
+- Free meeting call notes / action tracker: https://darweesh128-cmd.github.io/client-close-kit/meeting-call-notes.html
+- Free project brief generator: https://darweesh128-cmd.github.io/client-close-kit/project-brief.html
 - Free late fee / interest calculator: https://darweesh128-cmd.github.io/client-close-kit/late-fee-calculator.html
 - Free client / project intake form: https://darweesh128-cmd.github.io/client-close-kit/client-intake-form.html
+- Free project kickoff email generator: https://darweesh128-cmd.github.io/client-close-kit/kickoff-email.html
