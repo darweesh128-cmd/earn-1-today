@@ -21,3 +21,4 @@
 - Free statement of account / outstanding balance: https://darweesh128-cmd.github.io/client-close-kit/statement-of-account.html
 - Free freelance credit note / invoice adjustment generator: https://darweesh128-cmd.github.io/client-close-kit/credit-note.html
 - Free freelance certificate of completion / final delivery acceptance: https://darweesh128-cmd.github.io/client-close-kit/certificate-of-completion.html
+- Free freelance purchase order generator: https://darweesh128-cmd.github.io/client-close-kit/purchase-order.html
