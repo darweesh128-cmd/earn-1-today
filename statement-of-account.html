@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Statement of Account / Outstanding Balance — Client Close Kit</title>
+<meta name="description" content="Generate a freelance statement of account in your browser: parties, period, opening balance, invoices & payments, closing balance, due date. Print, copy, TXT/MD. No signup. Template only — not accounting advice."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/statement-of-account.html"/>
+<meta property="og:title" content="Free Statement of Account — Client Close Kit"/>
+<meta property="og:description" content="Outstanding balance generator for freelancers. Browser-only, MIT, printable. Not accounting advice."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/statement-of-account.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429;--danger:#ff8a9a}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px} h1{font-size:1.45rem;margin:0 0 8px} h2{font-size:1.05rem;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.row4{display:grid;grid-template-columns:1.1fr 1fr 1.4fr .9fr auto;gap:10px;align-items:end}
+@media(max-width:900px){.row,.row3,.row4{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}
+textarea{min-height:72px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}
+button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+button.tiny{margin-top:0;padding:8px 10px;font-size:.8rem}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}
+.preview{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;background:#121a24;border:1px solid var(--line);border-radius:10px;padding:14px;min-height:280px}
+.warn{background:#2a2410;border:1px solid #5a4a18;color:#f0d78c;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+.totals{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}.totals div{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:130px}
+.totals strong{display:block;font-size:1.2rem}.totals span{font-size:.78rem;color:var(--muted)}
+.totals .pos strong{color:var(--ok)}.totals .neg strong{color:var(--danger)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:8px} th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.78rem} td.num,th.num{text-align:right} .empty{color:var(--muted);padding:8px 0}
+footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+@media print{body{background:#fff;color:#000}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#entryCard,#actions,.warn,#lineForm{display:none}.preview{border:0;background:#fff;color:#000;font-size:12px} table{font-size:12px} th,td{border-color:#ddd;color:#000} .totals strong{color:#000}}
+</style>
+</head>
+<body>
+<main>
+<h1>Statement of account</h1>
+<p class="lead">Build a freelance statement of account / outstanding balance summary: parties, period, opening balance, invoices &amp; payments, closing balance, and due date. Runs only in your browser. Template only — not accounting or tax advice.</p>
+<div class="warn"><strong>Disclaimer:</strong> This is an educational template for client communication. It is not bookkeeping software, a tax document, or professional accounting advice. Verify figures against your invoices and bank records before sending.</div>
+
+<div class="card" id="formCard">
+  <h2>Parties &amp; period</h2>
+  <div class="row">
+    <div><label for="docId">Statement ID</label><input id="docId" value="SOA-001"/></div>
+    <div><label for="issueDate">Issue date</label><input id="issueDate" type="date"/></div>
+  </div>
+  <div class="row">
+    <div><label for="freelancer">From (freelancer / studio)</label><input id="freelancer" value="Alex Rivera"/></div>
+    <div><label for="client">To (client / company)</label><input id="client" value="Acme Co."/></div>
+  </div>
+  <div class="row">
+    <div><label for="periodFrom">Period from</label><input id="periodFrom" type="date"/></div>
+    <div><label for="periodTo">Period to</label><input id="periodTo" type="date"/></div>
+  </div>
+  <div class="row3">
+    <div><label for="opening">Opening balance</label><input id="opening" type="number" step="0.01" value="0"/></div>
+    <div><label for="currency">Currency</label><input id="currency" value="USD" maxlength="6"/></div>
+    <div><label for="dueDate">Amount due by</label><input id="dueDate" type="date"/></div>
+  </div>
+  <div class="row">
+    <div><label for="payMethod">Preferred payment method</label><input id="payMethod" value="PayPal / bank transfer"/></div>
+    <div><label for="payRef">Payment reference / note</label><input id="payRef" value="Please use invoice # on transfer"/></div>
+  </div>
+  <label for="notes">Notes to client</label>
+  <textarea id="notes" placeholder="Thank you for your business. Please settle the outstanding balance by the due date.">Thank you for your business. Please settle the outstanding balance by the due date above.</textarea>
+</div>
+
+<div class="card" id="entryCard">
+  <h2>Add line item</h2>
+  <div class="row4" id="lineForm">
+    <div>
+      <label for="liType">Type</label>
+      <select id="liType">
+        <option value="invoice" selected>Invoice (increases balance)</option>
+        <option value="payment">Payment (decreases balance)</option>
+        <option value="credit">Credit / adjustment (−)</option>
+        <option value="debit">Debit / fee (+)</option>
+      </select>
+    </div>
+    <div><label for="liDate">Date</label><input id="liDate" type="date"/></div>
+    <div><label for="liDesc">Description / ref</label><input id="liDesc" placeholder="INV-104 · Landing page redesign" value="INV-104 · Landing page redesign"/></div>
+    <div><label for="liAmount">Amount</label><input id="liAmount" type="number" min="0" step="0.01" value="1200"/></div>
+    <div><button type="button" class="tiny" id="addLine">Add</button></div>
+  </div>
+  <p class="tip" style="margin-top:10px">Invoices &amp; debits add to what the client owes. Payments &amp; credits reduce it. Data stays in <strong>localStorage</strong> on this device.</p>
+  <div id="tableWrap"><p class="empty">No line items yet — add sample invoices/payments above.</p></div>
+  <div class="totals" id="totals"></div>
+</div>
+
+<div class="card" id="actions">
+  <h2>Preview &amp; export</h2>
+  <button type="button" id="gen">Update preview</button>
+  <button type="button" class="secondary" id="save">Save draft</button>
+  <button type="button" class="secondary" id="copy">Copy text</button>
+  <button type="button" class="secondary" id="txt">Download TXT</button>
+  <button type="button" class="secondary" id="md">Download MD</button>
+  <button type="button" class="secondary" id="print">Print</button>
+  <button type="button" class="danger" id="clear">Clear all</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Pair with free <a href="invoice-generator.html">invoice generator</a>, <a href="payment-reminder.html">payment reminder</a>, and <a href="expense-log.html">expense log</a>.</p>
+</div>
+
+<div class="card">
+  <h2>Statement preview</h2>
+  <pre class="preview" id="out"></pre>
+</div>
+
+<footer>
+  Free tool from <a href="./">Client Close Kit</a> · MIT ·
+  Optional pack: <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/5">PayPal.me $5</a> (note <code>CLIENT-CLOSE-KIT</code>)
+</footer>
+</main>
+<script>
+(function(){
+  const KEY='cck-statement-of-account-v1';
+  const $=id=>document.getElementById(id);
+  const today=()=>new Date().toISOString().slice(0,10);
+  const fields=['docId','issueDate','freelancer','client','periodFrom','periodTo','opening','currency','dueDate','payMethod','payRef','notes'];
+  let lines=[];
+
+  function money(n,c){
+    const v=(Number(n)||0);
+    const s=v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+    return s+' '+(c||'USD');
+  }
+  function signedDelta(type,amount){
+    const a=Math.abs(Number(amount)||0);
+    if(type==='invoice'||type==='debit') return a;
+    return -a;
+  }
+  function typeLabel(t){
+    return ({invoice:'Invoice',payment:'Payment',credit:'Credit',debit:'Debit'})[t]||t;
+  }
+
+  // defaults
+  $('issueDate').value=today();
+  $('liDate').value=today();
+  const d=new Date();
+  const first=new Date(d.getFullYear(),d.getMonth(),1).toISOString().slice(0,10);
+  const last=new Date(d.getFullYear(),d.getMonth()+1,0).toISOString().slice(0,10);
+  $('periodFrom').value=first;
+  $('periodTo').value=last;
+  const due=new Date(d.getTime()+14*864e5).toISOString().slice(0,10);
+  $('dueDate').value=due;
+
+  try{
+    const s=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(s){
+      fields.forEach(k=>{ if(s[k]!=null && $(k)) $(k).value=s[k]; });
+      if(Array.isArray(s.lines)) lines=s.lines;
+    } else {
+      // seed sample lines once
+      lines=[
+        {id:1,type:'invoice',date:first,desc:'INV-104 · Landing page redesign',amount:1200},
+        {id:2,type:'invoice',date:first,desc:'INV-105 · Retainer — current month',amount:2500},
+        {id:3,type:'payment',date:today(),desc:'Payment received · PayPal',amount:1200}
+      ];
+    }
+  }catch(e){}
+
+  let nextId=lines.reduce((m,l)=>Math.max(m,l.id||0),0)+1;
+
+  function persist(){
+    const data={};
+    fields.forEach(k=>data[k]=$(k).value);
+    data.lines=lines;
+    localStorage.setItem(KEY,JSON.stringify(data));
+  }
+  function flash(t){
+    $('msg').hidden=false; $('msg').textContent=t||'Saved locally';
+    setTimeout(()=>{$('msg').hidden=true;$('msg').textContent='Saved locally';},1400);
+  }
+
+  function calc(){
+    const open=Number($('opening').value)||0;
+    let invoices=0, payments=0, credits=0, debits=0;
+    lines.forEach(l=>{
+      const a=Math.abs(Number(l.amount)||0);
+      if(l.type==='invoice') invoices+=a;
+      else if(l.type==='payment') payments+=a;
+      else if(l.type==='credit') credits+=a;
+      else if(l.type==='debit') debits+=a;
+    });
+    const closing=open+invoices+debits-payments-credits;
+    return {open,invoices,payments,credits,debits,closing};
+  }
+
+  function renderTable(){
+    const c=$('currency').value.trim()||'USD';
+    if(!lines.length){
+      $('tableWrap').innerHTML='<p class="empty">No line items yet — add sample invoices/payments above.</p>';
+    } else {
+      const sorted=[...lines].sort((a,b)=>(a.date||'').localeCompare(b.date||'')||(a.id-b.id));
+      let html='<table><thead><tr><th>Date</th><th>Type</th><th>Description</th><th class="num">Amount</th><th></th></tr></thead><tbody>';
+      sorted.forEach(l=>{
+        const delta=signedDelta(l.type,l.amount);
+        const sign=delta>=0?'+':'−';
+        html+='<tr><td>'+esc(l.date||'')+'</td><td>'+esc(typeLabel(l.type))+'</td><td>'+esc(l.desc||'')+'</td>'
+          +'<td class="num">'+sign+' '+money(Math.abs(delta),c)+'</td>'
+          +'<td><button type="button" class="tiny danger" data-del="'+l.id+'">Remove</button></td></tr>';
+      });
+      html+='</tbody></table>';
+      $('tableWrap').innerHTML=html;
+      $('tableWrap').querySelectorAll('[data-del]').forEach(btn=>{
+        btn.onclick=()=>{
+          lines=lines.filter(x=>String(x.id)!==btn.getAttribute('data-del'));
+          persist(); renderAll(); flash('Removed');
+        };
+      });
+    }
+    const t=calc();
+    const cur=$('currency').value.trim()||'USD';
+    $('totals').innerHTML=
+      '<div><span>Opening</span><strong>'+money(t.open,cur)+'</strong></div>'+
+      '<div class="pos"><span>Invoices + debits</span><strong>'+money(t.invoices+t.debits,cur)+'</strong></div>'+
+      '<div class="neg"><span>Payments + credits</span><strong>'+money(t.payments+t.credits,cur)+'</strong></div>'+
+      '<div class="'+(t.closing>0?'neg':'pos')+'"><span>Closing / amount due</span><strong>'+money(t.closing,cur)+'</strong></div>';
+  }
+
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+
+  function buildText(){
+    const c=$('currency').value.trim()||'USD';
+    const t=calc();
+    const sorted=[...lines].sort((a,b)=>(a.date||'').localeCompare(b.date||'')||(a.id-b.id));
+    const rows=sorted.map(l=>{
+      const delta=signedDelta(l.type,l.amount);
+      const sign=delta>=0?'+':'-';
+      return (l.date||'')+'  '+typeLabel(l.type).padEnd(8)+'  '+(l.desc||'')+'  '+sign+money(Math.abs(delta),c);
+    });
+    const out=[
+      'STATEMENT OF ACCOUNT',
+      'Statement ID: '+$('docId').value.trim(),
+      'Issue date: '+$('issueDate').value,
+      'Period: '+$('periodFrom').value+' → '+$('periodTo').value,
+      'Amount due by: '+($('dueDate').value||'(not set)'),
+      '',
+      'FROM (Provider)',
+      $('freelancer').value.trim()||'(not specified)',
+      '',
+      'TO (Client)',
+      $('client').value.trim()||'(not specified)',
+      '',
+      'SUMMARY',
+      'Currency: '+c,
+      'Opening balance: '+money(t.open,c),
+      'Invoices:         '+money(t.invoices,c),
+      'Debits / fees:    '+money(t.debits,c),
+      'Payments:         '+money(t.payments,c),
+      'Credits:          '+money(t.credits,c),
+      'Closing balance:  '+money(t.closing,c)+(t.closing>0?'  ← AMOUNT DUE':(t.closing<0?'  ← CREDIT TO CLIENT':'  ← SETTLED')),
+      '',
+      'LINE ITEMS',
+      ...(rows.length?rows:['(none)']),
+      '',
+      'PAYMENT',
+      'Preferred method: '+($('payMethod').value.trim()||'(unspecified)'),
+      'Reference: '+($('payRef').value.trim()||'(none)'),
+      '',
+      'NOTES',
+      $('notes').value.trim()||'(none)',
+      '',
+      '—',
+      'Generated with Client Close Kit (template only — not accounting advice)',
+      'https://darweesh128-cmd.github.io/client-close-kit/statement-of-account.html'
+    ];
+    return out.join('\n');
+  }
+
+  function renderAll(){
+    renderTable();
+    $('out').textContent=buildText();
+  }
+
+  $('addLine').onclick=()=>{
+    const amount=Math.abs(Number($('liAmount').value)||0);
+    if(!amount){ flash('Enter an amount'); return; }
+    lines.push({
+      id:nextId++,
+      type:$('liType').value,
+      date:$('liDate').value||today(),
+      desc:$('liDesc').value.trim()||'(no description)',
+      amount
+    });
+    $('liDesc').value='';
+    $('liAmount').value='';
+    persist(); renderAll(); flash('Line added');
+  };
+
+  $('gen').onclick=()=>{ persist(); renderAll(); flash('Updated'); };
+  $('save').onclick=()=>{ persist(); renderAll(); flash('Saved locally'); };
+  $('print').onclick=()=>{ persist(); renderAll(); window.print(); };
+  $('clear').onclick=()=>{
+    if(!confirm('Clear all fields, line items, and local draft?')) return;
+    localStorage.removeItem(KEY);
+    lines=[];
+    nextId=1;
+    $('docId').value='SOA-001';
+    $('freelancer').value='';
+    $('client').value='';
+    $('opening').value='0';
+    $('currency').value='USD';
+    $('payMethod').value='PayPal / bank transfer';
+    $('payRef').value='';
+    $('notes').value='';
+    $('issueDate').value=today();
+    $('periodFrom').value=first;
+    $('periodTo').value=last;
+    $('dueDate').value=due;
+    $('liDate').value=today();
+    $('liType').value='invoice';
+    $('liDesc').value='';
+    $('liAmount').value='';
+    renderAll();
+    flash('Cleared');
+  };
+  $('copy').onclick=async()=>{
+    renderAll();
+    const t=$('out').textContent;
+    try{await navigator.clipboard.writeText(t);}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+    flash('Copied');
+  };
+  $('txt').onclick=()=>{
+    renderAll();
+    const blob=new Blob([$('out').textContent],{type:'text/plain;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='statement-of-account.txt';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    flash('TXT ready');
+  };
+  $('md').onclick=()=>{
+    renderAll();
+    const blob=new Blob(['# Statement of account\n\n```\n'+$('out').textContent+'\n```\n'],{type:'text/markdown;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='statement-of-account.md';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    flash('MD ready');
+  };
+  fields.forEach(id=>{
+    if(!$(id)) return;
+    $(id).addEventListener('input',()=>{ persist(); renderAll(); });
+    $(id).addEventListener('change',()=>{ persist(); renderAll(); });
+  });
+  renderAll();
+})();
+</script>
+</body>
+</html>
