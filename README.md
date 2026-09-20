@@ -30,3 +30,5 @@ Free browser invoice tool: https://darweesh128-cmd.github.io/client-close-kit/in
 Personal and commercial use of the templates in your own client work. Do not resell the pack as-is.
 
 - Free SOW: https://darweesh128-cmd.github.io/client-close-kit/scope-of-work.html
+
+- Free proposal / cover letter: https://darweesh128-cmd.github.io/client-close-kit/proposal-outline.html
