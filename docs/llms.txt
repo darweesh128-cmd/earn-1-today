@@ -1,0 +1,21 @@
+# Client Close Kit
+> Bilingual WhatsApp sales captions + invoice/quote templates for freelancers.
+
+- Sell page: https://darweesh128-cmd.github.io/client-close-kit/
+- Free invoice generator: https://darweesh128-cmd.github.io/client-close-kit/invoice-generator.html
+- PayPal $5: https://www.paypal.com/paypalme/MohammedAldarwesh/5 (note CLIENT-CLOSE-KIT)
+- PayPal $1: https://www.paypal.com/paypalme/MohammedAldarwesh/1 (note CLIENT-CLOSE-KIT)
+- GitHub: https://github.com/darweesh128-cmd/client-close-kit
+- Free hourly rate calculator: https://darweesh128-cmd.github.io/client-close-kit/rate-calculator.html
+- payment-reminder.html — Free late payment reminder email generator
+- Free scope of work / contract outline: https://darweesh128-cmd.github.io/client-close-kit/scope-of-work.html
+- Free proposal / cover letter outline: https://darweesh128-cmd.github.io/client-close-kit/proposal-outline.html
+- Free client onboarding checklist: https://darweesh128-cmd.github.io/client-close-kit/client-onboarding-checklist.html
+- Free freelance timesheet / time tracker: https://darweesh128-cmd.github.io/client-close-kit/timesheet.html
+- Free freelance expense / receipt log: https://darweesh128-cmd.github.io/client-close-kit/expense-log.html
+- Free change order / scope change form: https://darweesh128-cmd.github.io/client-close-kit/change-order-form.html
+- Free milestone payment schedule: https://darweesh128-cmd.github.io/client-close-kit/milestone-payment-schedule.html
+- Free weekly status report: https://darweesh128-cmd.github.io/client-close-kit/weekly-status-report.html
+- Free NDA / confidentiality outline: https://darweesh128-cmd.github.io/client-close-kit/nda-outline.html
+- Free retainer agreement outline: https://darweesh128-cmd.github.io/client-close-kit/retainer-agreement-outline.html
+- Free statement of account / outstanding balance: https://darweesh128-cmd.github.io/client-close-kit/statement-of-account.html

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://darweesh128-cmd.github.io/earn-1-today/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url><loc>https://darweesh128-cmd.github.io/earn-1-today/weekly-status-report.html</loc></url>
-  <url><loc>https://darweesh128-cmd.github.io/earn-1-today/nda-outline.html</loc></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/invoice-generator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/quote-generator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/rate-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/payment-reminder.html</loc></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/scope-of-work.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/proposal-outline.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/client-onboarding-checklist.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/timesheet.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/expense-log.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/change-order-form.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/milestone-payment-schedule.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/weekly-status-report.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/nda-outline.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/retainer-agreement-outline.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://darweesh128-cmd.github.io/client-close-kit/statement-of-account.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>
