@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Project Kickoff Email Generator — Client Close Kit</title>
+<meta name="description" content="Generate a clear freelance project kickoff email: goals, timeline, next steps, access asks, and meeting agenda. Browser-only, printable, no signup."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/kickoff-email.html"/>
+<meta property="og:title" content="Free Project Kickoff Email Generator — Client Close Kit"/>
+<meta property="og:description" content="Draft a professional project kickoff email for freelancers. Browser-only, MIT, printable."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/kickoff-email.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429;--paypal:#0070ba}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding-bottom:72px}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px}h1{font-size:1.45rem;margin:0 0 8px}h2{font-size:1.05rem;margin:0 0 10px}.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:760px){.row,.row3{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}textarea{min-height:72px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}.warn{background:#2a2410;border:1px solid #5a4a18;color:#f0d78c;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+.preview{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:18px;min-height:280px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.55}.preview h3{margin:0 0 4px;font-size:1.1rem;font-family:system-ui,sans-serif;white-space:normal}.preview-meta{font-family:system-ui,sans-serif;color:var(--muted);font-size:.85rem;margin-bottom:14px;white-space:normal;border-bottom:1px solid var(--line);padding-bottom:12px}footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paypal);color:#fff;box-shadow:0 -6px 24px rgba(0,0,0,.35);padding:.65rem 1rem}
+.sticky-cta .inner{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+.sticky-cta p{margin:0;font-size:.9rem;font-weight:600}.sticky-cta a{display:inline-block;background:#fff;color:var(--paypal);text-decoration:none;font-weight:700;padding:.55rem .9rem;border-radius:8px}
+@media print{body{background:#fff;color:#000;padding-bottom:0}main{max-width:none;padding:0}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#actions,.warn,.sticky-cta,#metaCard{display:none!important}.preview{border:0;background:#fff;color:#000;padding:0;white-space:pre-wrap}.preview-meta{color:#555;border-color:#ccc}}
+</style>
+</head>
+<body>
+<main>
+<h1>Project kickoff email generator</h1>
+<p class="lead">Draft a clear kickoff email after a client says yes: confirm scope, share timeline, ask for access, set the first meeting, and list next steps. Runs only in your browser. Template only — edit before sending.</p>
+<div class="warn"><strong>Tip:</strong> Keep it short. Confirm what you will deliver, what you need from them, and when you will talk next. Pair with intake + SOW before kickoff when possible.</div>
+<div class="card" id="formCard">
+  <h2>Parties &amp; project</h2>
+  <div class="row"><div><label for="fromName">From (you / studio)</label><input id="fromName" value="Alex Rivera"/></div><div><label for="toName">To (client contact)</label><input id="toName" value="Jordan Lee"/></div></div>
+  <div class="row"><div><label for="clientCo">Client / company</label><input id="clientCo" value="Acme Co."/></div><div><label for="project">Project name</label><input id="project" value="Website redesign — Phase 1"/></div></div>
+  <div class="row"><div><label for="tone">Tone</label>
+    <select id="tone">
+      <option value="friendly" selected>Friendly professional</option>
+      <option value="formal">Formal</option>
+      <option value="brief">Short &amp; direct</option>
+    </select>
+  </div><div><label for="startDate">Kickoff / start date</label><input id="startDate" type="date"/></div></div>
+</div>
+<div class="card" id="metaCard">
+  <h2>Email content</h2>
+  <label for="subject">Subject line</label>
+  <input id="subject" value="Kickoff: Website redesign — Phase 1"/>
+  <label for="goals">Confirmed goals / deliverables</label>
+  <textarea id="goals">• Homepage + 4 inner pages (desktop + mobile)
+• CMS handoff + 1 training call
+• Launch checklist and 14-day bugfix window</textarea>
+  <label for="timeline">Timeline / milestones</label>
+  <textarea id="timeline">Week 1: discovery + sitemap
+Week 2–3: design drafts
+Week 4: build + content
+Week 5: QA + launch</textarea>
+  <label for="access">Access / assets needed from client</label>
+  <textarea id="access">• Brand guidelines / logo files
+• Domain + hosting login (or invite)
+• Content draft or point of contact for copy
+• Preferred payment method confirmation</textarea>
+  <div class="row"><div><label for="meeting">First meeting (date/time or “TBD”)</label><input id="meeting" value="Tue 10:00 AM (your timezone) — 30 min Zoom"/></div><div><label for="replyBy">Please reply by</label><input id="replyBy" type="date"/></div></div>
+  <label for="nextSteps">Your next steps (optional)</label>
+  <textarea id="nextSteps">1) I’ll send a calendar invite
+2) I’ll share a shared folder link
+3) Please confirm access items above</textarea>
+  <label for="closing">Extra note / closing</label>
+  <textarea id="closing">Looking forward to building this with you. Reply to this email if anything should change before we start.</textarea>
+</div>
+<div class="card" id="actions">
+  <h2>Preview &amp; export</h2>
+  <button type="button" id="gen">Update preview</button><button type="button" class="secondary" id="save">Save draft</button><button type="button" class="secondary" id="copy">Copy email</button><button type="button" class="secondary" id="txt">Download TXT</button><button type="button" class="secondary" id="print">Print / save PDF</button><button type="button" class="danger" id="clear">Clear all</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Pair with <a href="client-intake-form.html">client intake</a>, <a href="project-brief.html">project brief</a>, <a href="scope-of-work.html">scope of work</a>, and <a href="client-onboarding-checklist.html">onboarding checklist</a>. Tip the kit via <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me/MohammedAldarwesh/1</a>.</p>
+</div>
+<div class="card"><h2>Email preview</h2><div class="preview" id="out"></div></div>
+<footer>Free tool from <a href="./">Client Close Kit</a> · MIT · No signup · No backend · <a href="https://github.com/darweesh128-cmd/client-close-kit">Source</a> · Tips: <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me</a></footer>
+</main>
+<div class="sticky-cta" role="region" aria-label="PayPal support tip"><div class="inner"><p>Support / unlock tip $1 · note CLIENT-CLOSE-KIT</p><a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me $1</a></div></div>
+<script>
+(function(){
+  const KEY='cck-kickoff-email-v1',$=id=>document.getElementById(id),today=()=>new Date().toISOString().slice(0,10);
+  const fields=['fromName','toName','clientCo','project','tone','startDate','subject','goals','timeline','access','meeting','replyBy','nextSteps','closing'];
+  $('startDate').value=today();
+  const r=new Date();r.setDate(r.getDate()+2);$('replyBy').value=r.toISOString().slice(0,10);
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s){fields.forEach(k=>{if(s[k]!=null)$(k).value=s[k]})}}catch(e){}
+  function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function persist(){const d={};fields.forEach(k=>d[k]=$(k).value);localStorage.setItem(KEY,JSON.stringify(d))}
+  function flash(t){$('msg').hidden=false;$('msg').textContent=t;setTimeout(()=>{$('msg').hidden=true},1500)}
+  function greet(){
+    const tone=$('tone').value, name=$('toName').value.trim()||'there';
+    if(tone==='formal') return 'Dear '+name+',';
+    if(tone==='brief') return 'Hi '+name+' —';
+    return 'Hi '+name+',';
+  }
+  function signoff(){
+    const tone=$('tone').value, from=$('fromName').value.trim()||'';
+    if(tone==='formal') return 'Kind regards,\n'+from;
+    if(tone==='brief') return 'Thanks,\n'+from;
+    return 'Best,\n'+from;
+  }
+  function bodyText(){
+    const tone=$('tone').value;
+    const project=$('project').value.trim()||'the project';
+    const co=$('clientCo').value.trim();
+    const start=$('startDate').value||'(date TBD)';
+    let open;
+    if(tone==='brief'){
+      open='Excited to kick off '+project+(co?' for '+co:'')+'. Start target: '+start+'.';
+    } else if(tone==='formal'){
+      open='Thank you for confirming '+project+(co?' with '+co:'')+'. This email outlines kickoff details so we can begin on '+start+'.';
+    } else {
+      open='Thanks again for choosing to move forward on '+project+(co?' with '+co:'')+'. Here is a short kickoff summary so we start aligned on '+start+'.';
+    }
+    const parts=[
+      greet(),
+      '',
+      open,
+      '',
+      'What we are delivering:',
+      $('goals').value.trim()||'(add deliverables)',
+      '',
+      'Proposed timeline:',
+      $('timeline').value.trim()||'(add timeline)',
+      '',
+      'What I need from you:',
+      $('access').value.trim()||'(list access / assets)',
+      '',
+      'First meeting: '+($('meeting').value.trim()||'TBD'),
+      'Please reply by: '+($('replyBy').value||'ASAP'),
+      ''
+    ];
+    const ns=$('nextSteps').value.trim();
+    if(ns){parts.push('My next steps:',ns,'')}
+    const cl=$('closing').value.trim();
+    if(cl){parts.push(cl,'')}
+    parts.push(signoff());
+    return parts.join('\n');
+  }
+  function fullEmail(){
+    return [
+      'Subject: '+($('subject').value.trim()||'(no subject)'),
+      'To: '+($('toName').value.trim()||'')+($('clientCo').value.trim()?' <'+$('clientCo').value.trim()+'>':''),
+      'From: '+($('fromName').value.trim()||''),
+      '',
+      bodyText()
+    ].join('\n');
+  }
+  function renderPreview(){
+    $('out').innerHTML='<div class="preview-meta"><strong>Subject:</strong> '+esc($('subject').value||'(none)')+'<br><strong>To:</strong> '+esc($('toName').value||'—')+' · '+esc($('clientCo').value||'')+'<br><strong>From:</strong> '+esc($('fromName').value||'—')+'</div>'+esc(bodyText());
+  }
+  $('gen').onclick=()=>{renderPreview();flash('Preview updated')};
+  $('save').onclick=()=>{persist();flash('Saved locally')};
+  $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(fullEmail());flash('Copied email')}catch(e){flash('Copy unavailable — use TXT download')}};
+  $('txt').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([fullEmail()],{type:'text/plain'}));a.download=($('project').value||'kickoff').replace(/[^\w\-]+/g,'_').slice(0,40)+'-kickoff.txt';a.click();URL.revokeObjectURL(a.href)};
+  $('print').onclick=()=>{renderPreview();window.print()};
+  $('clear').onclick=()=>{if(confirm('Clear this kickoff email draft?')){localStorage.removeItem(KEY);location.reload()}};
+  fields.forEach(k=>$(k).addEventListener('input',()=>{
+    if(k==='project'){const p=$('project').value.trim();if(p && !$('subject').dataset.touched)$('subject').value='Kickoff: '+p}
+    renderPreview();
+  }));
+  $('subject').addEventListener('input',()=>{$('subject').dataset.touched='1';renderPreview()});
+  renderPreview();
+})();
+</script>
+</body>
+</html>
