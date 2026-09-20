@@ -53,3 +53,4 @@ Personal and commercial use of the templates in your own client work. Do not res
 
 - Free delivery note / packing slip: https://darweesh128-cmd.github.io/client-close-kit/delivery-note.html
 - Free client feedback form: https://darweesh128-cmd.github.io/earn-1-today/client-feedback-form.html
+- Free project brief generator: https://darweesh128-cmd.github.io/earn-1-today/project-brief.html

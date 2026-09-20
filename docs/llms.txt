@@ -26,3 +26,4 @@
 - Free freelance work order / job ticket generator: https://darweesh128-cmd.github.io/client-close-kit/work-order.html
 - Free freelance delivery note / packing slip: https://darweesh128-cmd.github.io/client-close-kit/delivery-note.html
 - Free client feedback form: https://darweesh128-cmd.github.io/earn-1-today/client-feedback-form.html
+- Free freelance project brief generator: https://darweesh128-cmd.github.io/earn-1-today/project-brief.html
