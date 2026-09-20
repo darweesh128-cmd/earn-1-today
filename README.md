@@ -32,7 +32,12 @@ Personal and commercial use of the templates in your own client work. Do not res
 - Free SOW: https://darweesh128-cmd.github.io/client-close-kit/scope-of-work.html
 
 - Free proposal / cover letter: https://darweesh128-cmd.github.io/client-close-kit/proposal-outline.html
+
+- Free client onboarding checklist: https://darweesh128-cmd.github.io/client-close-kit/client-onboarding-checklist.html
+- Free timesheet / time tracker: https://darweesh128-cmd.github.io/client-close-kit/timesheet.html
+- Free expense / receipt log: https://darweesh128-cmd.github.io/client-close-kit/expense-log.html
 - Free change order / scope change form: https://darweesh128-cmd.github.io/client-close-kit/change-order-form.html
 - Free milestone payment schedule: https://darweesh128-cmd.github.io/client-close-kit/milestone-payment-schedule.html
-- Free weekly status report: https://darweesh128-cmd.github.io/earn-1-today/weekly-status-report.html
-- Free NDA / confidentiality outline: https://darweesh128-cmd.github.io/earn-1-today/nda-outline.html
+- Free weekly status report: https://darweesh128-cmd.github.io/client-close-kit/weekly-status-report.html
+- Free NDA / confidentiality outline: https://darweesh128-cmd.github.io/client-close-kit/nda-outline.html
+- Free retainer agreement outline: https://darweesh128-cmd.github.io/client-close-kit/retainer-agreement-outline.html
