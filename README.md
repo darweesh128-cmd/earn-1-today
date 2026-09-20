@@ -50,3 +50,5 @@ Personal and commercial use of the templates in your own client work. Do not res
 
 - Free payment receipt generator: https://darweesh128-cmd.github.io/client-close-kit/receipt-generator.html
 - Free work order / job ticket generator: https://darweesh128-cmd.github.io/client-close-kit/work-order.html
+
+- Free delivery note / packing slip: https://darweesh128-cmd.github.io/client-close-kit/delivery-note.html

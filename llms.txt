@@ -24,3 +24,4 @@
 - Free freelance purchase order generator: https://darweesh128-cmd.github.io/client-close-kit/purchase-order.html
 - Free freelance payment receipt generator: https://darweesh128-cmd.github.io/client-close-kit/receipt-generator.html
 - Free freelance work order / job ticket generator: https://darweesh128-cmd.github.io/client-close-kit/work-order.html
+- Free freelance delivery note / packing slip: https://darweesh128-cmd.github.io/client-close-kit/delivery-note.html
