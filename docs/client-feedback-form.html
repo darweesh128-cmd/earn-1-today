@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Client Feedback Form — Client Close Kit</title>
+<meta name="description" content="Create a printable client feedback / satisfaction form in your browser: project rating, NPS, what went well, improvements, testimonial permission. No signup, no backend."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/client-feedback-form.html"/>
+<meta property="og:title" content="Free Client Feedback Form — Client Close Kit"/>
+<meta property="og:description" content="Freelance client feedback and NPS form generator. Browser-only, MIT, printable."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/client-feedback-form.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429;--paypal:#0070ba}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding-bottom:72px}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px}h1{font-size:1.45rem;margin:0 0 8px}h2{font-size:1.05rem;margin:0 0 10px}.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:760px){.row,.row3{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}textarea{min-height:88px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}.warn{background:#2a2410;border:1px solid #5a4a18;color:#f0d78c;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+.preview{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:18px;min-height:320px}.preview h3{margin:0 0 4px;font-size:1.25rem}.preview-head{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}.preview small{color:var(--muted)}.preview .q{margin:14px 0;padding-top:10px;border-top:1px dashed var(--line)}.preview .q:first-of-type{border-top:0;padding-top:0}.stars{letter-spacing:2px;font-size:1.1rem}.sig-box{border-top:1px solid var(--line);padding-top:8px;min-height:56px;margin-top:24px}footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paypal);color:#fff;box-shadow:0 -6px 24px rgba(0,0,0,.35);padding:.65rem 1rem}
+.sticky-cta .inner{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+.sticky-cta p{margin:0;font-size:.9rem;font-weight:600}.sticky-cta a{display:inline-block;background:#fff;color:var(--paypal);text-decoration:none;font-weight:700;padding:.55rem .9rem;border-radius:8px}
+@media print{body{background:#fff;color:#000;padding-bottom:0}main{max-width:none;padding:0}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#actions,.warn,.sticky-cta{display:none!important}.preview{border:0;background:#fff;color:#000;padding:0}.preview small{color:#555}.preview .q{border-color:#ccc}.sig-box{border-color:#999}}
+</style>
+</head>
+<body>
+<main>
+<h1>Client feedback form</h1>
+<p class="lead">Send clients a clean feedback / satisfaction form after a project or milestone: overall rating, NPS, what went well, improvements, and optional testimonial permission. Print or save as PDF. Runs only in your browser. Template only — not survey research advice.</p>
+<div class="warn"><strong>Disclaimer:</strong> Educational template only. Adapt wording for your jurisdiction and client agreements before collecting personal feedback or publishing testimonials.</div>
+<div class="card" id="formCard">
+  <h2>Form header</h2>
+  <div class="row"><div><label for="formNo">Form #</label><input id="formNo" value="CF-001"/></div><div><label for="formDate">Date</label><input id="formDate" type="date"/></div></div>
+  <div class="row"><div><label for="freelancer">Freelancer / studio</label><input id="freelancer" value="Alex Rivera"/></div><div><label for="client">Client / company</label><input id="client" value="Acme Co."/></div></div>
+  <div class="row"><div><label for="project">Project / engagement</label><input id="project" value="Marketing site refresh"/></div><div><label for="period">Period covered</label><input id="period" placeholder="e.g. Sep 2026 delivery" value="Final delivery — Sep 2026"/></div></div>
+  <label for="intro">Intro note to client</label>
+  <textarea id="intro">Thanks for working with us. Your honest feedback helps improve future work. This takes about 3 minutes.</textarea>
+</div>
+<div class="card">
+  <h2>Default ratings (optional prefill for demo)</h2>
+  <div class="row3">
+    <div><label for="overall">Overall satisfaction (1–5)</label><select id="overall"><option value="">(blank for client)</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+    <div><label for="nps">NPS (0–10)</label><select id="nps"><option value="">(blank for client)</option><option>10</option><option>9</option><option>8</option><option>7</option><option>6</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option><option>0</option></select></div>
+    <div><label for="recommend">Would hire again?</label><select id="recommend"><option value="">(blank for client)</option><option>Yes</option><option>Maybe</option><option>No</option></select></div>
+  </div>
+  <label for="wentWell">What went well</label><textarea id="wentWell" placeholder="Leave blank for client to fill, or prefill if collecting verbally"></textarea>
+  <label for="improve">What could improve</label><textarea id="improve" placeholder="Leave blank for client to fill"></textarea>
+  <label for="testimonial">Testimonial quote (optional)</label><textarea id="testimonial" placeholder="Short quote the client may allow you to publish"></textarea>
+  <div class="row"><div><label for="permission">Publish permission</label><select id="permission"><option value="">(blank for client)</option><option>Yes — name + company</option><option>Yes — company only</option><option>Yes — anonymous</option><option>No</option></select></div><div><label for="contact">Follow-up email (optional)</label><input id="contact" placeholder="client@example.com"/></div></div>
+</div>
+<div class="card" id="actions">
+  <h2>Preview &amp; export</h2>
+  <button type="button" id="gen">Update preview</button><button type="button" class="secondary" id="save">Save draft</button><button type="button" class="secondary" id="copy">Copy text</button><button type="button" class="secondary" id="txt">Download TXT</button><button type="button" class="secondary" id="print">Print / save PDF</button><button type="button" class="danger" id="clear">Clear all</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Pair with <a href="certificate-of-completion.html">certificate of completion</a>, <a href="weekly-status-report.html">weekly status</a>, and <a href="receipt-generator.html">receipt</a>. Tip the kit via <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me/MohammedAldarwesh/1</a>.</p>
+</div>
+<div class="card"><h2>Feedback form preview</h2><div class="preview" id="out"></div></div>
+<footer>Free tool from <a href="./">Client Close Kit</a> · MIT · No signup · No backend · <a href="https://github.com/darweesh128-cmd/client-close-kit">Source</a> · Tips: <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me</a></footer>
+</main>
+<div class="sticky-cta" role="region" aria-label="PayPal support tip"><div class="inner"><p>Support / unlock tip $1 · note CLIENT-CLOSE-KIT</p><a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me $1</a></div></div>
+<script>
+(function(){
+  const KEY='cck-client-feedback-v1',$=id=>document.getElementById(id),today=()=>new Date().toISOString().slice(0,10);
+  const fields=['formNo','formDate','freelancer','client','project','period','intro','overall','nps','recommend','wentWell','improve','testimonial','permission','contact'];
+  $('formDate').value=today();
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s){fields.forEach(k=>{if(s[k]!=null)$(k).value=s[k]})}}catch(e){}
+  function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function persist(){const d={};fields.forEach(k=>d[k]=$(k).value);localStorage.setItem(KEY,JSON.stringify(d))}
+  function flash(t){$('msg').hidden=false;$('msg').textContent=t;setTimeout(()=>{$('msg').hidden=true},1500)}
+  function stars(n){const v=Number(n);if(!v)return '☆ ☆ ☆ ☆ ☆  (circle one)';return '★'.repeat(v)+'☆'.repeat(Math.max(0,5-v))}
+  function text(){return ['CLIENT FEEDBACK FORM','Form #: '+($('formNo').value.trim()||'(not set)'),'Date: '+($('formDate').value||'(not set)'),'Freelancer: '+($('freelancer').value.trim()||'(not set)'),'Client: '+($('client').value.trim()||'(not set)'),'Project: '+($('project').value.trim()||'(not set)'),'Period: '+($('period').value.trim()||'(not set)'),'',$('intro').value.trim()||'','','1. Overall satisfaction (1–5): '+($('overall').value||'_____'),'2. How likely are you to recommend us (0–10 NPS)? '+($('nps').value||'_____'),'3. Would you hire us again? '+($('recommend').value||'Yes / Maybe / No'),'','4. What went well?',$('wentWell').value.trim()||'________________________________','','5. What could we improve?',$('improve').value.trim()||'________________________________','','6. Testimonial quote (optional)',$('testimonial').value.trim()||'________________________________','','7. May we publish your feedback? '+($('permission').value||'Yes (name+company) / company only / anonymous / No'),'8. Follow-up email: '+($('contact').value.trim()||'________________'),'','Client signature / name: ________________  Date: ________','','Template from Client Close Kit — not legal advice.'].join('\n')}
+  function renderPreview(){
+    const nl=s=>esc(s||'').replace(/\n/g,'<br>');
+    $('out').innerHTML='<div class="preview-head"><div><h3>CLIENT FEEDBACK</h3><small>Project satisfaction &amp; testimonial permission</small></div><div><strong>'+esc($('formNo').value||'CF-001')+'</strong><br><small>Date: '+esc($('formDate').value||'—')+'</small></div></div><p><small>Freelancer</small><br>'+esc($('freelancer').value||'—')+'</p><p><small>Client</small><br>'+esc($('client').value||'—')+'</p><p><small>Project</small><br>'+esc($('project').value||'—')+($('period').value.trim()?'<br><small>Period: '+esc($('period').value)+'</small>':'')+'</p><p>'+nl($('intro').value)+'</p><div class="q"><small>1. Overall satisfaction (1–5)</small><div class="stars">'+esc(stars($('overall').value))+'</div></div><div class="q"><small>2. NPS — recommend to a peer (0–10)</small><br><strong>'+esc($('nps').value||'0 1 2 3 4 5 6 7 8 9 10  (circle)')+'</strong></div><div class="q"><small>3. Would you hire us again?</small><br>'+esc($('recommend').value||'Yes / Maybe / No')+'</div><div class="q"><small>4. What went well?</small><br>'+nl($('wentWell').value||'________________________________')+'</div><div class="q"><small>5. What could we improve?</small><br>'+nl($('improve').value||'________________________________')+'</div><div class="q"><small>6. Testimonial quote (optional)</small><br>'+nl($('testimonial').value||'________________________________')+'</div><div class="q"><small>7. Publish permission</small><br>'+esc($('permission').value||'Yes (name+company) / company only / anonymous / No')+'</div><div class="q"><small>8. Follow-up email</small><br>'+esc($('contact').value||'________________')+'</div><div class="sig-box"><small>Client signature / name · Date</small></div><p style="margin-top:16px"><small>Prepared with Client Close Kit. Adapt before collecting or publishing feedback.</small></p>'}
+  $('gen').onclick=()=>{renderPreview();flash('Preview updated')};$('save').onclick=()=>{persist();flash('Saved locally')};$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(text());flash('Copied text')}catch(e){flash('Copy unavailable — use TXT download')}};$('txt').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text()],{type:'text/plain'}));a.download=($('formNo').value||'client-feedback')+'.txt';a.click();URL.revokeObjectURL(a.href)};$('print').onclick=()=>{renderPreview();window.print()};$('clear').onclick=()=>{if(confirm('Clear this feedback form draft?')){localStorage.removeItem(KEY);location.reload()}};
+  fields.forEach(k=>$(k).addEventListener('input',()=>renderPreview()));renderPreview();
+})();
+</script>
+</body>
+</html>
