@@ -43,3 +43,4 @@ Personal and commercial use of the templates in your own client work. Do not res
 - Free retainer agreement outline: https://darweesh128-cmd.github.io/client-close-kit/retainer-agreement-outline.html
 - Free statement of account / outstanding balance: https://darweesh128-cmd.github.io/client-close-kit/statement-of-account.html
 - Free credit note / invoice adjustment generator: https://darweesh128-cmd.github.io/client-close-kit/credit-note.html
+- Free project brief generator: https://darweesh128-cmd.github.io/earn-1-today/project-brief.html
