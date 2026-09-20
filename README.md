@@ -49,3 +49,4 @@ Personal and commercial use of the templates in your own client work. Do not res
 - Free purchase order generator: https://darweesh128-cmd.github.io/client-close-kit/purchase-order.html
 
 - Free payment receipt generator: https://darweesh128-cmd.github.io/client-close-kit/receipt-generator.html
+- Free work order / job ticket generator: https://darweesh128-cmd.github.io/client-close-kit/work-order.html
