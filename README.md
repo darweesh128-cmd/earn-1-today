@@ -33,3 +33,4 @@ Personal and commercial use of the templates in your own client work. Do not res
 
 - Free proposal / cover letter: https://darweesh128-cmd.github.io/client-close-kit/proposal-outline.html
 - Free change order / scope change form: https://darweesh128-cmd.github.io/client-close-kit/change-order-form.html
+- Free milestone payment schedule: https://darweesh128-cmd.github.io/client-close-kit/milestone-payment-schedule.html

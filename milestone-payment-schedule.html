@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Freelance Milestone Payment Schedule — Client Close Kit</title>
+<meta name="description" content="Plan project milestones, amounts, and due dates in your browser. Printable payment schedule for freelancers. No signup."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/milestone-payment-schedule.html"/>
+<meta property="og:title" content="Free Milestone Payment Schedule — Client Close Kit"/>
+<meta property="og:description" content="Break a project into milestones with amounts and due dates. Browser-only, MIT, printable."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/milestone-payment-schedule.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px} h1{font-size:1.45rem;margin:0 0 8px} h2{font-size:1.05rem;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.row4{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:12px}
+@media(max-width:800px){.row,.row3,.row4{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}
+textarea{min-height:64px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}
+button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}
+.totals{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px}.totals div{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:120px}
+.totals strong{display:block;font-size:1.25rem;color:var(--ok)}.totals span{font-size:.8rem;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:.92rem} th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.8rem} td.num,th.num{text-align:right} .empty{color:var(--muted);padding:12px 0}
+.actions button{margin-top:0;padding:6px 10px;font-size:.8rem}
+.preview{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;background:#121a24;border:1px solid var(--line);border-radius:10px;padding:14px;min-height:180px}
+footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+@media print{body{background:#fff;color:#000}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#entry{display:none}.preview{border:0;background:#fff;color:#000;font-size:12px} table{font-size:12px} th,td{border-color:#ddd;color:#000} .totals strong{color:#000}}
+</style>
+</head>
+<body>
+<main>
+<h1>Milestone payment schedule</h1>
+<p class="lead">Plan project milestones with amounts and due dates — then print, copy, or download CSV for the client. Runs only in your browser. No signup.</p>
+
+<div class="card" id="formCard">
+  <h2>Project details</h2>
+  <div class="row">
+    <div><label for="schedNum">Schedule #</label><input id="schedNum" value="MS-001"/></div>
+    <div><label for="date">Date prepared</label><input id="date" type="date"/></div>
+  </div>
+  <div class="row">
+    <div><label for="freelancer">Freelancer / studio</label><input id="freelancer" value="Alex Rivera"/></div>
+    <div><label for="client">Client / company</label><input id="client" value="Acme Co."/></div>
+  </div>
+  <div class="row">
+    <div><label for="project">Project name</label><input id="project" value="Marketing site refresh"/></div>
+    <div><label for="currency">Currency</label><input id="currency" value="USD" maxlength="6"/></div>
+  </div>
+  <div class="row">
+    <div><label for="totalBudget">Total project fee (optional)</label><input id="totalBudget" type="number" min="0" step="1" value="4500" placeholder="e.g. 4500"/></div>
+    <div>
+      <label for="terms">Default payment trigger</label>
+      <select id="terms">
+        <option value="due">Due on milestone date</option>
+        <option value="approval" selected>Due on client approval of deliverable</option>
+        <option value="start">Due before work on milestone starts</option>
+        <option value="net7">Net 7 after delivery</option>
+        <option value="net15">Net 15 after delivery</option>
+      </select>
+    </div>
+  </div>
+  <label for="notes">Notes / payment method</label>
+  <textarea id="notes" placeholder="PayPal / bank transfer / wire…">Invoices issued per milestone. Pay via PayPal or bank transfer within the terms above.</textarea>
+  <label for="lang">Language</label>
+  <select id="lang">
+    <option value="en">English</option>
+    <option value="both" selected>English + Arabic summary</option>
+    <option value="ar">Arabic primary</option>
+  </select>
+</div>
+
+<div class="card" id="entry">
+  <h2>Add milestone</h2>
+  <div class="row4">
+    <div><label for="mName">Milestone / deliverable</label><input id="mName" value="Discovery & wireframes" list="mNames"/></div>
+    <div><label for="mAmount">Amount</label><input id="mAmount" type="number" min="0" step="1" value="900"/></div>
+    <div><label for="mPct">% of total (opt.)</label><input id="mPct" type="number" min="0" max="100" step="1" value="20" placeholder="%"/></div>
+    <div><label for="mDue">Due date</label><input id="mDue" type="date"/></div>
+  </div>
+  <datalist id="mNames"></datalist>
+  <label for="mDesc">Deliverable notes</label>
+  <textarea id="mDesc" placeholder="Kickoff call, sitemap, 3 wireframe pages">Kickoff call, sitemap, desktop wireframes for home + 2 inner pages.</textarea>
+  <button type="button" id="add">Add milestone</button>
+  <button type="button" class="secondary" id="gen">Generate schedule</button>
+  <button type="button" class="secondary" id="copy">Copy</button>
+  <button type="button" class="secondary" id="csv">Download CSV</button>
+  <button type="button" class="secondary" id="print">Print / PDF</button>
+  <button type="button" class="secondary" id="save">Save draft</button>
+  <button type="button" class="danger" id="clear">Clear milestones</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Data stays in <strong>localStorage</strong>. Pair with <a href="invoice-generator.html">invoice</a>, <a href="scope-of-work.html">SOW</a>, and <a href="change-order-form.html">change order</a>. Optional <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">$1 tip</a> (note <code>CLIENT-CLOSE-KIT</code>).</p>
+</div>
+
+<div class="card">
+  <h2>Milestones</h2>
+  <div class="totals">
+    <div><strong id="sumAmount">0</strong><span>Scheduled amount</span></div>
+    <div><strong id="sumPct">0%</strong><span>% of total fee</span></div>
+    <div><strong id="mCount">0</strong><span>Milestones</span></div>
+    <div><strong id="remain">—</strong><span>Remaining vs total</span></div>
+  </div>
+  <div style="overflow-x:auto;margin-top:12px">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Milestone</th><th class="num">Amount</th><th class="num">%</th><th>Due</th><th>Notes</th><th></th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <p class="empty" id="empty">No milestones yet — add your first above.</p>
+</div>
+
+<div class="card">
+  <h2>Preview</h2>
+  <div class="preview" id="out"></div>
+</div>
+
+<footer>
+  Free tool from <a href="./">Client Close Kit</a> · MIT · Not legal advice — a plain template only ·
+  <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/5">PayPal.me $5 pack</a>
+</footer>
+</main>
+<script>
+(function(){
+  const META_KEY='cck-milestone-meta-v1';
+  const ROWS_KEY='cck-milestone-rows-v1';
+  const $=id=>document.getElementById(id);
+  const today=()=>new Date().toISOString().slice(0,10);
+  let rows=[];
+  try{ rows=JSON.parse(localStorage.getItem(ROWS_KEY)||'[]')||[]; }catch(e){ rows=[]; }
+
+  $('date').value=today();
+  const due0=new Date(); due0.setDate(due0.getDate()+7);
+  $('mDue').value=due0.toISOString().slice(0,10);
+
+  try{
+    const s=JSON.parse(localStorage.getItem(META_KEY)||'null');
+    if(s){['schedNum','date','freelancer','client','project','currency','totalBudget','terms','notes','lang'].forEach(k=>{if(s[k]!=null&&$(k))$(k).value=s[k];});}
+  }catch(e){}
+
+  function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function money(n,cur){
+    const v=(Number(n)||0).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
+    return v+' '+(cur||$('currency').value.trim()||'USD');
+  }
+  function termsLabel(){
+    return ({
+      due:'Due on the milestone due date',
+      approval:'Due on client approval of the milestone deliverable',
+      start:'Due before work on this milestone starts',
+      net7:'Net 7 after delivery of the milestone',
+      net15:'Net 15 after delivery of the milestone'
+    })[$('terms').value]||'';
+  }
+  function persistMeta(){
+    const data={};
+    ['schedNum','date','freelancer','client','project','currency','totalBudget','terms','notes','lang'].forEach(k=>data[k]=$(k).value);
+    localStorage.setItem(META_KEY,JSON.stringify(data));
+  }
+  function persistRows(){ localStorage.setItem(ROWS_KEY,JSON.stringify(rows)); }
+  function flash(t){
+    $('msg').hidden=false; $('msg').textContent=t||'Saved locally';
+    setTimeout(()=>{$('msg').hidden=true;$('msg').textContent='Saved locally';},1400);
+  }
+
+  function sumAmount(){ return rows.reduce((s,r)=>s+(Number(r.amount)||0),0); }
+
+  function renderTable(){
+    const cur=$('currency').value.trim()||'USD';
+    const budget=Number($('totalBudget').value)||0;
+    const tb=$('tbody');
+    tb.innerHTML=rows.map((r,i)=>{
+      const pct=r.pct!=null&&r.pct!==''?r.pct:(budget?(((Number(r.amount)||0)/budget)*100).toFixed(1):'—');
+      return `<tr>
+        <td>${i+1}</td>
+        <td>${esc(r.name)}</td>
+        <td class="num">${money(r.amount,cur)}</td>
+        <td class="num">${pct=== '—'?'—':pct+'%'}</td>
+        <td>${esc(r.due||'')}</td>
+        <td>${esc(r.desc||'')}</td>
+        <td class="actions"><button type="button" class="secondary" data-i="${i}">Remove</button></td>
+      </tr>`;
+    }).join('');
+    tb.querySelectorAll('button[data-i]').forEach(btn=>{
+      btn.addEventListener('click',()=>{ rows.splice(+btn.dataset.i,1); persistRows(); renderAll(); });
+    });
+    const sa=sumAmount();
+    $('sumAmount').textContent=money(sa,cur);
+    $('mCount').textContent=String(rows.length);
+    if(budget>0){
+      $('sumPct').textContent=((sa/budget)*100).toFixed(1)+'%';
+      $('remain').textContent=money(budget-sa,cur);
+    }else{
+      const pctSum=rows.reduce((s,r)=>s+(Number(r.pct)||0),0);
+      $('sumPct').textContent=pctSum?pctSum+'%':'—';
+      $('remain').textContent='—';
+    }
+    $('empty').style.display=rows.length?'none':'block';
+    const dl=$('mNames');
+    const names=[...new Set(rows.map(r=>r.name).filter(Boolean))];
+    dl.innerHTML=names.map(n=>`<option value="${esc(n)}"></option>`).join('');
+  }
+
+  function buildEN(){
+    const cur=$('currency').value.trim()||'USD';
+    const budget=Number($('totalBudget').value);
+    const lines=[
+      'MILESTONE PAYMENT SCHEDULE',
+      'Schedule #: '+$('schedNum').value.trim(),
+      'Date: '+$('date').value,
+      '',
+      'Freelancer / studio: '+$('freelancer').value.trim(),
+      'Client: '+$('client').value.trim(),
+      'Project: '+$('project').value.trim(),
+      budget?('Total project fee: '+money(budget,cur)):'',
+      'Payment trigger: '+termsLabel(),
+      '',
+      'MILESTONES'
+    ].filter(Boolean);
+    if(!rows.length) lines.push('(none yet)');
+    else rows.forEach((r,i)=>{
+      const pct=r.pct!=null&&r.pct!==''?(' ('+r.pct+'%)'):'';
+      lines.push((i+1)+'. '+r.name+' — '+money(r.amount,cur)+pct+(r.due?' — due '+r.due:''));
+      if(r.desc) lines.push('   Deliverable: '+r.desc);
+    });
+    lines.push('');
+    lines.push('Scheduled total: '+money(sumAmount(),cur));
+    if(budget) lines.push('Remaining vs total fee: '+money(budget-sumAmount(),cur));
+    lines.push('');
+    lines.push('NOTES');
+    lines.push($('notes').value.trim()||'(none)');
+    lines.push('');
+    lines.push('ACCEPTANCE');
+    lines.push('By approving this schedule, the client agrees to pay each milestone amount under the payment trigger stated above. Work on a milestone may wait until the prior milestone is paid if marked as due before start.');
+    lines.push('');
+    lines.push('Client signature: ________________________  Date: __________');
+    lines.push('Freelancer signature: ____________________  Date: __________');
+    lines.push('');
+    lines.push('Generated with Client Close Kit (template only — not legal advice)');
+    lines.push('https://darweesh128-cmd.github.io/client-close-kit/milestone-payment-schedule.html');
+    return lines.join('\n');
+  }
+  function buildAR(){
+    const cur=$('currency').value.trim()||'USD';
+    const budget=Number($('totalBudget').value);
+    const lines=[
+      'جدول دفعات المراحل',
+      'رقم الجدول: '+$('schedNum').value.trim(),
+      'التاريخ: '+$('date').value,
+      'المستقل / الاستوديو: '+$('freelancer').value.trim(),
+      'العميل: '+$('client').value.trim(),
+      'المشروع: '+$('project').value.trim(),
+      budget?('إجمالي أتعاب المشروع: '+money(budget,cur)):'',
+      'شرط الدفع: '+termsLabel(),
+      '',
+      'المراحل:'
+    ].filter(Boolean);
+    if(!rows.length) lines.push('(لا يوجد)');
+    else rows.forEach((r,i)=>{
+      lines.push((i+1)+'. '+r.name+' — '+money(r.amount,cur)+(r.due?' — الاستحقاق '+r.due:''));
+      if(r.desc) lines.push('   التسليم: '+r.desc);
+    });
+    lines.push('');
+    lines.push('إجمالي المجدول: '+money(sumAmount(),cur));
+    lines.push('ملاحظات: '+($('notes').value.trim()||'(لا يوجد)'));
+    lines.push('');
+    lines.push('بتوقيع هذا الجدول يوافق العميل على دفع مبلغ كل مرحلة وفق شرط الدفع المذكور.');
+    lines.push('توقيع العميل: ______________  التاريخ: ________');
+    lines.push('توقيع المستقل: _____________  التاريخ: ________');
+    return lines.join('\n');
+  }
+  function renderPreview(){
+    const lang=$('lang').value;
+    let t='';
+    if(lang==='en') t=buildEN();
+    else if(lang==='ar') t=buildAR();
+    else t=buildEN()+'\n\n—— Arabic summary / ملخص عربي ——\n\n'+buildAR();
+    $('out').textContent=t;
+  }
+  function renderAll(){ renderTable(); renderPreview(); }
+
+  $('add').onclick=()=>{
+    const name=$('mName').value.trim();
+    if(!name){ flash('Name required'); return; }
+    rows.push({
+      name,
+      amount:Number($('mAmount').value)||0,
+      pct:$('mPct').value===''?null:Number($('mPct').value),
+      due:$('mDue').value,
+      desc:$('mDesc').value.trim()
+    });
+    persistRows(); persistMeta();
+    // bump next due +7d and suggest next common name
+    const d=new Date($('mDue').value||today());
+    d.setDate(d.getDate()+14);
+    $('mDue').value=d.toISOString().slice(0,10);
+    const suggestions=['UI design','Development','Content & SEO','Launch & handoff','Final payment / warranty'];
+    const next=suggestions[Math.min(rows.length-1,suggestions.length-1)];
+    if(next) $('mName').value=next;
+    const budget=Number($('totalBudget').value)||0;
+    if(budget&&rows.length<5){
+      const left=budget-sumAmount();
+      const remMilestones=Math.max(1,5-rows.length);
+      $('mAmount').value=String(Math.max(0,Math.round(left/remMilestones)));
+      $('mPct').value=budget?String(Math.round((Number($('mAmount').value)/budget)*100)):'';
+    }
+    flash('Added');
+    renderAll();
+  };
+  $('gen').onclick=()=>{ persistMeta(); persistRows(); renderAll(); flash('Updated'); };
+  $('save').onclick=()=>{ persistMeta(); persistRows(); renderAll(); flash('Saved locally'); };
+  $('print').onclick=()=>{ persistMeta(); renderAll(); window.print(); };
+  $('clear').onclick=()=>{ if(confirm('Clear all milestones?')){ rows=[]; persistRows(); renderAll(); } };
+  $('copy').onclick=async()=>{
+    renderPreview();
+    const t=$('out').textContent;
+    try{await navigator.clipboard.writeText(t);}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+    flash('Copied');
+  };
+  $('csv').onclick=()=>{
+    const cur=$('currency').value.trim()||'USD';
+    const header=['#','Milestone','Amount','Currency','Percent','Due','Notes','Project','Client'];
+    const lines=[header.join(',')];
+    rows.forEach((r,i)=>{
+      const cells=[i+1,r.name,r.amount,cur,r.pct==null?'':r.pct,r.due||'',r.desc||'',$('project').value,$('client').value];
+      lines.push(cells.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(','));
+    });
+    const blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='milestone-payment-schedule.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    flash('CSV ready');
+  };
+  ['schedNum','date','freelancer','client','project','currency','totalBudget','terms','notes','lang'].forEach(id=>{
+    $(id).addEventListener('input',()=>{ persistMeta(); renderAll(); });
+  });
+  // seed sample if empty first visit
+  if(!rows.length && !localStorage.getItem(ROWS_KEY)){
+    const base=new Date();
+    const addDays=n=>{const d=new Date(base);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);};
+    rows=[
+      {name:'Discovery & wireframes',amount:900,pct:20,due:addDays(7),desc:'Kickoff, sitemap, wireframes'},
+      {name:'UI design',amount:1350,pct:30,due:addDays(21),desc:'Desktop + mobile mockups'},
+      {name:'Development',amount:1575,pct:35,due:addDays(42),desc:'Build + staging QA'},
+      {name:'Launch & handoff',amount:675,pct:15,due:addDays(56),desc:'Go-live, training, assets'}
+    ];
+    persistRows();
+  }
+  renderAll();
+})();
+</script>
+</body>
+</html>
