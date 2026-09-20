@@ -23,3 +23,4 @@
 - Free freelance certificate of completion / final delivery acceptance: https://darweesh128-cmd.github.io/client-close-kit/certificate-of-completion.html
 - Free freelance purchase order generator: https://darweesh128-cmd.github.io/client-close-kit/purchase-order.html
 - Free freelance payment receipt generator: https://darweesh128-cmd.github.io/client-close-kit/receipt-generator.html
+- Free freelance work order / job ticket generator: https://darweesh128-cmd.github.io/client-close-kit/work-order.html
