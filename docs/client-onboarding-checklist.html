@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Freelance Client Onboarding Checklist — Client Close Kit</title>
+<meta name="description" content="Create a practical freelance client onboarding checklist in your browser. Scope, access, kickoff, and handoff steps. No signup or upload."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/client-onboarding-checklist.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+main{max-width:800px;margin:0 auto;padding:24px 16px 48px} h1{font-size:1.45rem;margin:0 0 8px} h2{font-size:1.05rem;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:600px){.row{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px} input,textarea{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit} textarea{min-height:90px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}button.secondary{background:var(--line);color:var(--text);margin-left:8px}a{color:var(--accent)}
+.checklist{margin:0;padding:0;list-style:none}.checklist li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}.checklist li:last-child{border-bottom:0}.checklist input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--ok)}.checklist label{margin:0;color:var(--text);font-size:.95rem;cursor:pointer}.checklist input:checked+label{text-decoration:line-through;color:var(--muted)}
+.progress{height:8px;background:#121a24;border-radius:99px;overflow:hidden;margin:10px 0}.progress span{display:block;height:100%;width:0;background:var(--ok);transition:width .2s}.status{color:var(--muted);font-size:.85rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}.tip{color:var(--muted);font-size:.84rem}.tip strong{color:var(--text)}footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+@media print{body{background:#fff;color:#000}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip{display:none}.checklist label{color:#000}.checklist li{border-color:#ddd}}
+</style>
+</head>
+<body>
+<main>
+<h1>Freelance client onboarding checklist</h1>
+<p class="lead">Turn a signed project into a clean kickoff. Everything runs in your browser — no signup, no upload. Check items as you go, then copy or download a plain-text handoff for your records.</p>
+<div class="card">
+  <div class="row"><div><label for="client">Client / company</label><input id="client" value="Acme Co."/></div><div><label for="project">Project</label><input id="project" value="Marketing site refresh"/></div></div>
+  <label for="owner">Freelancer / studio</label><input id="owner" value="Alex Rivera"/>
+  <label for="custom">Extra onboarding items (one per line)</label><textarea id="custom" placeholder="Add a brand folder link\nConfirm preferred meeting day"></textarea>
+  <button type="button" id="build">Build checklist</button><button type="button" class="secondary" id="copy">Copy text</button><button type="button" class="secondary" id="download">Download .txt</button><button type="button" class="secondary" id="print">Print</button><span id="copied" class="ok" hidden>Copied</span>
+  <p class="tip">Free tool from Client Close Kit. If it saved you time, an optional <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">$1 PayPal tip</a> supports more free tools.</p>
+</div>
+<div class="card"><h2 id="title">Onboarding checklist</h2><div class="progress"><span id="bar"></span></div><div class="status" id="status">0 of 0 complete</div><ul class="checklist" id="list"></ul></div>
+<footer>Free browser-only tool · MIT licensed · No data leaves your browser · <a href="./">Client Close Kit</a> · <a href="./invoice-generator.html">invoice</a> · <a href="./quote-generator.html">quote</a> · <a href="./proposal-outline.html">proposal</a> · <a href="./scope-of-work.html">SOW</a></footer>
+</main>
+<script>
+const base=[
+ ['Confirm the signed scope, deliverables, exclusions, and revision limit','Scope'],
+ ['Confirm price, deposit/payment schedule, currency, and invoice recipient','Commercial'],
+ ['Send a short welcome message with kickoff date and communication channel','Kickoff'],
+ ['Collect client goals, audience, success metric, and deadline','Discovery'],
+ ['Collect brand assets, copy, examples, and required files','Inputs'],
+ ['Confirm who gives approvals and expected response time','Communication'],
+ ['Request only the access needed; use least privilege and a shared invite','Access'],
+ ['Create the project folder and name files consistently','Operations'],
+ ['Book the kickoff or first review and share the agenda','Kickoff'],
+ ['Send a written next step and owner for every open item','Handoff']
+];
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function items(){const extra=document.getElementById('custom').value.split(/\n+/).map(x=>x.trim()).filter(Boolean).map(x=>[x,'Custom']);return base.concat(extra)}
+function build(){const client=document.getElementById('client').value.trim()||'Client';const project=document.getElementById('project').value.trim()||'Project';document.getElementById('title').textContent=`${client} — ${project} onboarding`;const list=document.getElementById('list');list.innerHTML=items().map((x,i)=>`<li><input type="checkbox" id="c${i}"><label for="c${i}"><strong>${esc(x[1])}:</strong> ${esc(x[0])}</label></li>`).join('');list.querySelectorAll('input').forEach(x=>x.addEventListener('change',progress));progress()}
+function progress(){const all=[...document.querySelectorAll('#list input')],done=all.filter(x=>x.checked).length;document.getElementById('status').textContent=`${done} of ${all.length} complete`;document.getElementById('bar').style.width=all.length?`${done/all.length*100}%`:'0%'}
+function text(){const client=document.getElementById('client').value.trim()||'Client',project=document.getElementById('project').value.trim()||'Project',owner=document.getElementById('owner').value.trim()||'Freelancer';const all=[...document.querySelectorAll('#list li')];return `CLIENT ONBOARDING CHECKLIST\n${client} — ${project}\nOwner: ${owner}\n\n${all.map(li=>`${li.querySelector('input').checked?'[x]':'[ ]'} ${li.querySelector('label').innerText}`).join('\n')}\n\nGenerated with Client Close Kit\nhttps://darweesh128-cmd.github.io/client-close-kit/client-onboarding-checklist.html\n`}
+document.getElementById('build').addEventListener('click',build);document.getElementById('custom').addEventListener('input',build);document.getElementById('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(text())}catch(e){const t=document.createElement('textarea');t.value=text();document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}const x=document.getElementById('copied');x.hidden=false;setTimeout(()=>x.hidden=true,1400)});document.getElementById('download').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text()],{type:'text/plain'}));a.download='client-onboarding-checklist.txt';a.click();URL.revokeObjectURL(a.href)});document.getElementById('print').addEventListener('click',()=>window.print());build();
+</script>
+</body>
+</html>

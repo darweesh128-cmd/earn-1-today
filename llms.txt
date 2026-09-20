@@ -10,3 +10,4 @@
 - payment-reminder.html — Free late payment reminder email generator
 - Free scope of work / contract outline: https://darweesh128-cmd.github.io/client-close-kit/scope-of-work.html
 - Free proposal / cover letter outline: https://darweesh128-cmd.github.io/client-close-kit/proposal-outline.html
+- Free timesheet: https://darweesh128-cmd.github.io/client-close-kit/timesheet.html

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Freelance Timesheet / Time Tracker — Client Close Kit</title>
+<meta name="description" content="Log freelance hours by client and project in your browser. Totals, copy, CSV download, print. No signup or upload."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/timesheet.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px} h1{font-size:1.45rem;margin:0 0 8px} h2{font-size:1.05rem;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.row,.row3{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}
+textarea{min-height:70px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}
+button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.tip strong{color:var(--text)}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}
+.totals{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px}.totals div{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:120px}
+.totals strong{display:block;font-size:1.25rem;color:var(--ok)}.totals span{font-size:.8rem;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:.92rem} th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.8rem} td.num,th.num{text-align:right} .empty{color:var(--muted);padding:12px 0}
+.actions button{margin-top:0;padding:6px 10px;font-size:.8rem} footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+@media print{body{background:#fff;color:#000}.card{background:#fff;padding:0;border:0} .lead,button,footer,.tip,#entry{display:none} table{font-size:12px} th,td{border-color:#ddd;color:#000} .totals strong{color:#000}}
+</style>
+</head>
+<body>
+<main>
+<h1>Freelance timesheet / time tracker</h1>
+<p class="lead">Log billable hours by client and project in your browser — no signup, no upload. Add entries, see totals, then copy or download CSV for invoicing.</p>
+
+<div class="card" id="entry">
+  <h2>Add time entry</h2>
+  <div class="row">
+    <div><label for="client">Client</label><input id="client" value="Acme Co." list="clients"/></div>
+    <div><label for="project">Project / task</label><input id="project" value="Landing page"/></div>
+  </div>
+  <datalist id="clients"></datalist>
+  <div class="row3">
+    <div><label for="date">Date</label><input id="date" type="date"/></div>
+    <div><label for="hours">Hours</label><input id="hours" type="number" min="0" step="0.25" value="1.5"/></div>
+    <div><label for="rate">Hourly rate (optional)</label><input id="rate" type="number" min="0" step="1" value="75" placeholder="e.g. 75"/></div>
+  </div>
+  <label for="notes">Notes</label>
+  <textarea id="notes" placeholder="Wireframes review + revisions"></textarea>
+  <button type="button" id="add">Add entry</button>
+  <button type="button" class="secondary" id="copy">Copy text</button>
+  <button type="button" class="secondary" id="csv">Download CSV</button>
+  <button type="button" class="secondary" id="print">Print</button>
+  <button type="button" class="danger" id="clear">Clear all</button>
+  <span id="copied" class="ok" hidden>Copied</span>
+  <p class="tip">Free tool from Client Close Kit. If it saved you time, an optional <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">$1 PayPal tip</a> supports more free tools. Payment note: <strong>CLIENT-CLOSE-KIT</strong>.</p>
+</div>
+
+<div class="card">
+  <h2>Timesheet</h2>
+  <div class="totals">
+    <div><strong id="totalHours">0.00</strong><span>Total hours</span></div>
+    <div><strong id="totalAmount">$0.00</strong><span>Billable (hours × rate)</span></div>
+    <div><strong id="entryCount">0</strong><span>Entries</span></div>
+  </div>
+  <div style="overflow-x:auto;margin-top:12px">
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Client</th><th>Project</th><th class="num">Hours</th><th class="num">Rate</th><th class="num">Amount</th><th>Notes</th><th></th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <p class="empty" id="empty">No entries yet — add your first hour above.</p>
+</div>
+
+<footer>Free browser-only tool · MIT licensed · Data stays in this browser (localStorage) · <a href="./">Client Close Kit</a> · <a href="./invoice-generator.html">invoice</a> · <a href="./rate-calculator.html">rate</a> · <a href="./payment-reminder.html">reminder</a></footer>
+</main>
+<script>
+(function(){
+  const KEY='cck_timesheet_v1';
+  const $ = id => document.getElementById(id);
+  let rows = [];
+  try { rows = JSON.parse(localStorage.getItem(KEY)||'[]') || []; } catch(e){ rows=[]; }
+
+  function today(){
+    const d=new Date();
+    return d.toISOString().slice(0,10);
+  }
+  $('date').value = today();
+
+  function money(n){ return '$' + (Number(n)||0).toFixed(2); }
+  function hoursFmt(n){ return (Number(n)||0).toFixed(2); }
+  function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(rows)); }catch(e){} render(); }
+  function amount(r){ const h=Number(r.hours)||0, rate=Number(r.rate); return (rate||rate===0) && !isNaN(rate) ? h*rate : 0; }
+
+  function render(){
+    const tb=$('tbody');
+    tb.innerHTML = rows.map((r,i)=>{
+      const amt = amount(r);
+      return `<tr>
+        <td>${esc(r.date)}</td>
+        <td>${esc(r.client)}</td>
+        <td>${esc(r.project)}</td>
+        <td class="num">${hoursFmt(r.hours)}</td>
+        <td class="num">${r.rate===''||r.rate==null?'—':money(r.rate)}</td>
+        <td class="num">${(r.rate===''||r.rate==null)?'—':money(amt)}</td>
+        <td>${esc(r.notes||'')}</td>
+        <td class="actions"><button type="button" class="secondary" data-i="${i}">Remove</button></td>
+      </tr>`;
+    }).join('');
+    tb.querySelectorAll('button[data-i]').forEach(btn=>{
+      btn.addEventListener('click',()=>{ rows.splice(+btn.dataset.i,1); save(); });
+    });
+    const th = rows.reduce((s,r)=>s+(Number(r.hours)||0),0);
+    const ta = rows.reduce((s,r)=>s+amount(r),0);
+    $('totalHours').textContent = hoursFmt(th);
+    $('totalAmount').textContent = money(ta);
+    $('entryCount').textContent = String(rows.length);
+    $('empty').style.display = rows.length ? 'none' : 'block';
+    const clients = [...new Set(rows.map(r=>r.client).filter(Boolean))];
+    $('clients').innerHTML = clients.map(c=>`<option value="${esc(c)}"></option>`).join('');
+  }
+
+  function text(){
+    const th = rows.reduce((s,r)=>s+(Number(r.hours)||0),0);
+    const ta = rows.reduce((s,r)=>s+amount(r),0);
+    const lines = rows.map(r=>{
+      const amt = amount(r);
+      const ratePart = (r.rate===''||r.rate==null) ? '' : ` @ ${money(r.rate)} = ${money(amt)}`;
+      return `${r.date}\t${r.client}\t${r.project}\t${hoursFmt(r.hours)}h${ratePart}${r.notes?'\t'+r.notes:''}`;
+    });
+    return `FREELANCE TIMESHEET\n\n${lines.join('\n')}\n\nTotal hours: ${hoursFmt(th)}\nBillable total: ${money(ta)}\n\nGenerated with Client Close Kit\nhttps://darweesh128-cmd.github.io/client-close-kit/timesheet.html\n`;
+  }
+
+  function csv(){
+    const header = 'Date,Client,Project,Hours,Rate,Amount,Notes';
+    const body = rows.map(r=>{
+      const cells = [r.date,r.client,r.project,hoursFmt(r.hours),r.rate===''||r.rate==null?'':Number(r.rate).toFixed(2), (r.rate===''||r.rate==null)?'':amount(r).toFixed(2), r.notes||''];
+      return cells.map(c=>{
+        const s=String(c); return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+      }).join(',');
+    });
+    return [header,...body].join('\n')+'\n';
+  }
+
+  $('add').addEventListener('click',()=>{
+    const client=$('client').value.trim()||'Client';
+    const project=$('project').value.trim()||'Project';
+    const date=$('date').value||today();
+    const hours=Number($('hours').value);
+    if(!hours || hours<=0){ $('hours').focus(); return; }
+    const rateRaw=$('rate').value.trim();
+    const rate = rateRaw==='' ? '' : Number(rateRaw);
+    const notes=$('notes').value.trim();
+    rows.push({date,client,project,hours,rate,notes});
+    rows.sort((a,b)=>a.date<b.date?1:a.date>b.date?-1:0);
+    $('notes').value='';
+    $('hours').value='1';
+    save();
+  });
+
+  $('copy').addEventListener('click', async()=>{
+    const t=text();
+    try{ await navigator.clipboard.writeText(t);}catch(e){
+      const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+    }
+    const x=$('copied'); x.hidden=false; setTimeout(()=>x.hidden=true,1400);
+  });
+
+  $('csv').addEventListener('click',()=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([csv()],{type:'text/csv'}));
+    a.download='freelance-timesheet.csv';
+    a.click(); URL.revokeObjectURL(a.href);
+  });
+
+  $('print').addEventListener('click',()=>window.print());
+  $('clear').addEventListener('click',()=>{
+    if(rows.length && !confirm('Clear all timesheet entries stored in this browser?')) return;
+    rows=[]; save();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
