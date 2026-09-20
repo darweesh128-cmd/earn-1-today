@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Freelance Change Order / Scope Change Form — Client Close Kit</title>
+<meta name="description" content="Generate a printable freelance change order when clients request extra work. Extra scope, fee, and timeline in your browser. No signup."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/change-order-form.html"/>
+<meta property="og:title" content="Free Freelance Change Order Form — Client Close Kit"/>
+<meta property="og:description" content="Turn scope creep into a clear, signed change order. Browser-only, MIT, no upload."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/change-order-form.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px} h1{font-size:1.45rem;margin:0 0 8px} h2{font-size:1.05rem;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.row,.row3{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}
+textarea{min-height:72px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}
+button.secondary{background:var(--line);color:var(--text);margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}
+.preview{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;background:#121a24;border:1px solid var(--line);border-radius:10px;padding:14px;min-height:220px}
+.ar{direction:rtl;text-align:right;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);color:var(--muted);font-size:.9rem}
+footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+@media print{body{background:#fff;color:#000}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard{display:none}.preview{border:0;background:#fff;color:#000;font-size:12px;white-space:pre-wrap}}
+</style>
+</head>
+<body>
+<main>
+<h1>Change order / scope change form</h1>
+<p class="lead">When a client asks for “just one more thing,” turn it into a clear change order: extra work, fee, and timeline — then print or copy. Runs only in your browser.</p>
+
+<div class="card" id="formCard">
+  <h2>Project details</h2>
+  <div class="row">
+    <div><label for="coNum">Change order #</label><input id="coNum" value="CO-001"/></div>
+    <div><label for="date">Date</label><input id="date" type="date"/></div>
+  </div>
+  <div class="row">
+    <div><label for="freelancer">Freelancer / studio</label><input id="freelancer" value="Alex Rivera"/></div>
+    <div><label for="client">Client / company</label><input id="client" value="Acme Co."/></div>
+  </div>
+  <div class="row">
+    <div><label for="project">Original project</label><input id="project" value="Marketing site refresh"/></div>
+    <div><label for="ref">Original SOW / quote ref</label><input id="ref" value="SOW-2026-09 / Q-118"/></div>
+  </div>
+
+  <h2 style="margin-top:18px">Requested change</h2>
+  <label for="change">Description of extra / changed work</label>
+  <textarea id="change" placeholder="Add a blog listing page with 3 template layouts and CMS fields…">Add a blog listing page with 3 template layouts, category filters, and CMS fields for posts.</textarea>
+  <label for="reason">Reason / client request</label>
+  <textarea id="reason">Client requested blog after kickoff; not in original SOW.</textarea>
+  <div class="row3">
+    <div><label for="fee">Additional fee</label><input id="fee" value="450"/></div>
+    <div><label for="currency">Currency</label><input id="currency" value="USD" maxlength="6"/></div>
+    <div>
+      <label for="impact">Schedule impact</label>
+      <select id="impact">
+        <option value="none">No change to deadline</option>
+        <option value="days" selected>+3 business days</option>
+        <option value="week">+1 week</option>
+        <option value="custom">Custom (see notes)</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div><label for="newDeadline">New delivery date (optional)</label><input id="newDeadline" type="date"/></div>
+    <div>
+      <label for="payment">Payment terms for this CO</label>
+      <select id="payment">
+        <option value="50">50% to start / 50% on delivery</option>
+        <option value="100" selected>100% due before work begins</option>
+        <option value="invoice">Add to next invoice</option>
+        <option value="net15">Net 15 after delivery</option>
+      </select>
+    </div>
+  </div>
+  <label for="notes">Notes / exclusions</label>
+  <textarea id="notes" placeholder="Does not include copywriting, stock photos, or SEO content plan.">Does not include blog copywriting, photography, or ongoing content management.</textarea>
+  <label for="lang">Language</label>
+  <select id="lang">
+    <option value="en">English</option>
+    <option value="both" selected>English + Arabic summary</option>
+    <option value="ar">Arabic primary</option>
+  </select>
+  <button type="button" id="gen">Generate change order</button>
+  <button type="button" class="secondary" id="copy">Copy</button>
+  <button type="button" class="secondary" id="print">Print / PDF</button>
+  <button type="button" class="secondary" id="save">Save draft</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Data stays in <strong>localStorage</strong>. Pair with <a href="scope-of-work.html">SOW outline</a> and <a href="invoice-generator.html">invoice</a>. Optional <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">$1 tip</a> (note <code>CLIENT-CLOSE-KIT</code>).</p>
+</div>
+
+<div class="card">
+  <h2>Preview</h2>
+  <div class="preview" id="out"></div>
+</div>
+
+<footer>
+  Free tool from <a href="./">Client Close Kit</a> · MIT · Not legal advice — a plain template only ·
+  <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/5">PayPal.me $5 pack</a>
+</footer>
+</main>
+<script>
+(function(){
+  const KEY='cck-change-order-v1';
+  const $=id=>document.getElementById(id);
+  const today=()=>new Date().toISOString().slice(0,10);
+  $('date').value=today();
+  try{
+    const s=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(s){Object.keys(s).forEach(k=>{if($(k))$ (k).value=s[k];});}
+  }catch(e){}
+
+  function payLabel(){
+    return ({
+      '50':'50% due to start this change; 50% on delivery',
+      '100':'100% of the additional fee due before this work begins',
+      'invoice':'Amount will be added to the next project invoice',
+      'net15':'Net 15 after delivery of this change'
+    })[$('payment').value]||'';
+  }
+  function impactLabel(){
+    return ({
+      none:'No change to the current project deadline',
+      days:'Estimated +3 business days to the delivery date',
+      week:'Estimated +1 week to the delivery date',
+      custom:'See notes for schedule impact'
+    })[$('impact').value]||'';
+  }
+  function buildEN(){
+    const fee=(Number($('fee').value)||0).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
+    const cur=$('currency').value.trim()||'USD';
+    const nd=$('newDeadline').value?('\nNew target delivery date: '+$('newDeadline').value):'';
+    return [
+      'CHANGE ORDER / SCOPE CHANGE',
+      'Change order #: '+$('coNum').value.trim(),
+      'Date: '+$('date').value,
+      '',
+      'Freelancer / studio: '+$('freelancer').value.trim(),
+      'Client: '+$('client').value.trim(),
+      'Original project: '+$('project').value.trim(),
+      'Original SOW / quote: '+$('ref').value.trim(),
+      '',
+      '1. DESCRIPTION OF CHANGE',
+      $('change').value.trim(),
+      '',
+      '2. REASON / CLIENT REQUEST',
+      $('reason').value.trim(),
+      '',
+      '3. COMMERCIAL IMPACT',
+      'Additional fee: '+fee+' '+cur,
+      'Payment terms: '+payLabel(),
+      '',
+      '4. SCHEDULE IMPACT',
+      impactLabel()+nd,
+      '',
+      '5. NOTES / EXCLUSIONS',
+      $('notes').value.trim()||'(none)',
+      '',
+      '6. ACCEPTANCE',
+      'By approving this change order, the client agrees the work above is outside the original scope and accepts the fee and schedule impact stated here. Work on this change starts after approval'+( $('payment').value==='100'?' and payment':'' )+'.',
+      '',
+      'Client signature: ________________________  Date: __________',
+      'Freelancer signature: ____________________  Date: __________',
+      '',
+      'Generated with Client Close Kit (template only — not legal advice)',
+      'https://darweesh128-cmd.github.io/client-close-kit/change-order-form.html'
+    ].join('\n');
+  }
+  function buildAR(){
+    const fee=(Number($('fee').value)||0).toLocaleString('ar',{minimumFractionDigits:0,maximumFractionDigits:2});
+    const cur=$('currency').value.trim()||'USD';
+    return [
+      'أمر تغيير / تعديل نطاق العمل',
+      'رقم أمر التغيير: '+$('coNum').value.trim(),
+      'التاريخ: '+$('date').value,
+      'المستقل / الاستوديو: '+$('freelancer').value.trim(),
+      'العميل: '+$('client').value.trim(),
+      'المشروع: '+$('project').value.trim(),
+      'المرجع: '+$('ref').value.trim(),
+      '',
+      'وصف التغيير:',
+      $('change').value.trim(),
+      '',
+      'الرسوم الإضافية: '+fee+' '+cur,
+      'شروط الدفع: '+payLabel(),
+      'أثر الجدول الزمني: '+impactLabel(),
+      '',
+      'ملاحظات / استثناءات:',
+      $('notes').value.trim()||'(لا يوجد)',
+      '',
+      'بتوقيع أمر التغيير يوافق العميل على أن العمل أعلاه خارج النطاق الأصلي ويقبل الرسوم والأثر الزمني المذكور.',
+      '',
+      'توقيع العميل: ______________  التاريخ: ________',
+      'توقيع المستقل: _____________  التاريخ: ________'
+    ].join('\n');
+  }
+  function render(){
+    const lang=$('lang').value;
+    let t='';
+    if(lang==='en') t=buildEN();
+    else if(lang==='ar') t=buildAR();
+    else t=buildEN()+'\n\n—— Arabic summary / ملخص عربي ——\n\n'+buildAR();
+    $('out').textContent=t;
+  }
+  function persist(){
+    const data={};
+    ['coNum','date','freelancer','client','project','ref','change','reason','fee','currency','impact','newDeadline','payment','notes','lang'].forEach(k=>data[k]=$(k).value);
+    localStorage.setItem(KEY,JSON.stringify(data));
+    $('msg').hidden=false; setTimeout(()=>$('msg').hidden=true,1400);
+  }
+  $('gen').onclick=()=>{render(); persist();};
+  $('save').onclick=()=>{persist(); render();};
+  $('print').onclick=()=>{render(); window.print();};
+  $('copy').onclick=async()=>{
+    render();
+    const t=$('out').textContent;
+    try{await navigator.clipboard.writeText(t);}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}
+    $('msg').hidden=false; $('msg').textContent='Copied'; setTimeout(()=>{$('msg').hidden=true;$('msg').textContent='Saved locally';},1400);
+  };
+  ['coNum','date','freelancer','client','project','ref','change','reason','fee','currency','impact','newDeadline','payment','notes','lang'].forEach(id=>$(id).addEventListener('input',render));
+  render();
+})();
+</script>
+</body>
+</html>
