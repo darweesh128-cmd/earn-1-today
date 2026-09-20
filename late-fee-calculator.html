@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Late Fee / Interest Calculator — Client Close Kit</title>
+<meta name="description" content="Calculate overdue invoice late fees and simple or compound interest in your browser. Flat fee, daily %, monthly %, or annual rate. No signup, no backend."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/late-fee-calculator.html"/>
+<meta property="og:title" content="Free Late Fee / Interest Calculator — Client Close Kit"/>
+<meta property="og:description" content="Freelance overdue invoice late-fee and interest calculator. Browser-only, MIT, printable."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/late-fee-calculator.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429;--paypal:#0070ba}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding-bottom:72px}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px}h1{font-size:1.45rem;margin:0 0 8px}h2{font-size:1.05rem;margin:0 0 10px}.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:760px){.row,.row3{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}textarea{min-height:72px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}.warn{background:#2a2410;border:1px solid #5a4a18;color:#f0d78c;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+.preview{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:18px;min-height:280px}.preview h3{margin:0 0 4px;font-size:1.25rem}.preview-head{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}.preview small{color:var(--muted)}.totals{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.totals div{background:#0f1419;border:1px solid var(--line);border-radius:8px;padding:12px}.totals strong{display:block;font-size:1.25rem;color:var(--ok);margin-top:4px}footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paypal);color:#fff;box-shadow:0 -6px 24px rgba(0,0,0,.35);padding:.65rem 1rem}
+.sticky-cta .inner{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+.sticky-cta p{margin:0;font-size:.9rem;font-weight:600}.sticky-cta a{display:inline-block;background:#fff;color:var(--paypal);text-decoration:none;font-weight:700;padding:.55rem .9rem;border-radius:8px}
+@media print{body{background:#fff;color:#000;padding-bottom:0}main{max-width:none;padding:0}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#actions,.warn,.sticky-cta{display:none!important}.preview{border:0;background:#fff;color:#000;padding:0}.preview small{color:#555}.totals div{background:#fff;border-color:#ccc}.totals strong{color:#000}}
+</style>
+</head>
+<body>
+<main>
+<h1>Late fee / interest calculator</h1>
+<p class="lead">Estimate what an overdue invoice may accrue under a flat late fee, daily/monthly percentage, or annual interest (simple or compound). Print a summary for your records or client note. Runs only in your browser. Template only — not legal or tax advice.</p>
+<div class="warn"><strong>Disclaimer:</strong> Educational calculator only. Late fees and interest must match your contract and local law. Some jurisdictions cap or ban certain charges. Confirm with counsel before billing.</div>
+<div class="card" id="formCard">
+  <h2>Invoice &amp; parties</h2>
+  <div class="row"><div><label for="invNo">Invoice #</label><input id="invNo" value="INV-1042"/></div><div><label for="currency">Currency</label><input id="currency" value="USD"/></div></div>
+  <div class="row"><div><label for="freelancer">Freelancer / studio</label><input id="freelancer" value="Alex Rivera"/></div><div><label for="client">Client / company</label><input id="client" value="Acme Co."/></div></div>
+  <div class="row"><div><label for="principal">Principal / unpaid amount</label><input id="principal" type="number" step="0.01" min="0" value="2500"/></div><div><label for="dueDate">Original due date</label><input id="dueDate" type="date"/></div></div>
+  <div class="row"><div><label for="asOf">As-of / calculation date</label><input id="asOf" type="date"/></div><div><label for="grace">Grace period (days)</label><input id="grace" type="number" min="0" step="1" value="0"/></div></div>
+</div>
+<div class="card">
+  <h2>Fee method</h2>
+  <div class="row"><div><label for="method">Calculation method</label>
+    <select id="method">
+      <option value="flat">Flat late fee (one-time)</option>
+      <option value="daily" selected>Daily % of principal</option>
+      <option value="monthly">Monthly % of principal</option>
+      <option value="annual_simple">Annual interest — simple</option>
+      <option value="annual_compound">Annual interest — compound (daily)</option>
+      <option value="flat_plus_daily">Flat fee + daily %</option>
+    </select>
+  </div><div><label for="rate">Rate / fee amount</label><input id="rate" type="number" step="0.0001" min="0" value="0.05"/><span class="tip" id="rateHint">e.g. 0.05 = 0.05% per day, or flat $ amount depending on method</span></div></div>
+  <label for="notes">Contract clause / notes (optional)</label>
+  <textarea id="notes">Per agreement: overdue balances may accrue a late fee as calculated below. This is an estimate for discussion.</textarea>
+</div>
+<div class="card" id="actions">
+  <h2>Preview &amp; export</h2>
+  <button type="button" id="gen">Update preview</button><button type="button" class="secondary" id="save">Save draft</button><button type="button" class="secondary" id="copy">Copy text</button><button type="button" class="secondary" id="txt">Download TXT</button><button type="button" class="secondary" id="print">Print / save PDF</button><button type="button" class="danger" id="clear">Clear all</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Pair with <a href="payment-reminder.html">payment reminder</a>, <a href="statement-of-account.html">statement of account</a>, and <a href="invoice-generator.html">invoice</a>. Tip the kit via <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me/MohammedAldarwesh/1</a>.</p>
+</div>
+<div class="card"><h2>Calculation preview</h2><div class="preview" id="out"></div></div>
+<footer>Free tool from <a href="./">Client Close Kit</a> · MIT · No signup · No backend · <a href="https://github.com/darweesh128-cmd/client-close-kit">Source</a> · Tips: <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me</a></footer>
+</main>
+<div class="sticky-cta" role="region" aria-label="PayPal support tip"><div class="inner"><p>Support / unlock tip $1 · note CLIENT-CLOSE-KIT</p><a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me $1</a></div></div>
+<script>
+(function(){
+  const KEY='cck-late-fee-v1',$=id=>document.getElementById(id),today=()=>new Date().toISOString().slice(0,10);
+  const fields=['invNo','currency','freelancer','client','principal','dueDate','asOf','grace','method','rate','notes'];
+  $('asOf').value=today();
+  const d=new Date();d.setDate(d.getDate()-30);$('dueDate').value=d.toISOString().slice(0,10);
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s){fields.forEach(k=>{if(s[k]!=null)$(k).value=s[k]})}}catch(e){}
+  function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function persist(){const d={};fields.forEach(k=>d[k]=$(k).value);localStorage.setItem(KEY,JSON.stringify(d))}
+  function flash(t){$('msg').hidden=false;$('msg').textContent=t;setTimeout(()=>{$('msg').hidden=true},1500)}
+  function money(n,cur){const v=Number(n);if(!isFinite(v))return '—';return (cur||'USD')+' '+v.toFixed(2)}
+  function daysBetween(a,b){const da=new Date(a+'T12:00:00'),db=new Date(b+'T12:00:00');if(isNaN(da)||isNaN(db))return 0;return Math.max(0,Math.round((db-da)/86400000))}
+  function methodLabel(m){return({flat:'Flat late fee',daily:'Daily % of principal',monthly:'Monthly % of principal',annual_simple:'Annual interest (simple)',annual_compound:'Annual interest (compound daily)',flat_plus_daily:'Flat fee + daily %'}[m]||m)}
+  function updateHint(){
+    const m=$('method').value;
+    $('rateHint').textContent=m==='flat'||m==='flat_plus_daily'?'Flat fee in currency units (for flat+daily, rate is the flat portion — set daily % in notes or use daily method)':m==='daily'?'Percent per day of principal (e.g. 0.05 = 0.05%/day)':m==='monthly'?'Percent per month of principal (e.g. 1.5 = 1.5%/month)':'Annual percent rate (e.g. 18 = 18% APR)';
+    if(m==='flat'){if(Number($('rate').value)<1)$('rate').value=50}
+    else if(m==='daily'&&Number($('rate').value)>5)$('rate').value=0.05;
+    else if(m==='monthly'&&Number($('rate').value)>50)$('rate').value=1.5;
+    else if((m==='annual_simple'||m==='annual_compound')&&Number($('rate').value)<1)$('rate').value=18;
+  }
+  function calc(){
+    const principal=Math.max(0,Number($('principal').value)||0);
+    const grace=Math.max(0,Number($('grace').value)||0);
+    const calendarDays=daysBetween($('dueDate').value,$('asOf').value);
+    const overdueDays=Math.max(0,calendarDays-grace);
+    const rate=Math.max(0,Number($('rate').value)||0);
+    const method=$('method').value;
+    let fee=0,detail='';
+    if(overdueDays===0){detail='Not overdue past grace — fee = 0';}
+    else if(method==='flat'){fee=rate;detail='One-time flat fee of '+rate}
+    else if(method==='daily'){fee=principal*(rate/100)*overdueDays;detail=overdueDays+' days × '+rate+'% of principal/day'}
+    else if(method==='monthly'){const months=overdueDays/30.4375;fee=principal*(rate/100)*months;detail='~'+months.toFixed(2)+' months × '+rate+'%/month'}
+    else if(method==='annual_simple'){fee=principal*(rate/100)*(overdueDays/365);detail='Simple interest: principal × '+rate+'% × ('+overdueDays+'/365)'}
+    else if(method==='annual_compound'){const daily=rate/100/365;fee=principal*(Math.pow(1+daily,overdueDays)-1);detail='Compound daily at '+rate+'% APR for '+overdueDays+' days'}
+    else if(method==='flat_plus_daily'){const flat=rate;const dailyPct=0.05;fee=flat+principal*(dailyPct/100)*overdueDays;detail='Flat '+flat+' + '+overdueDays+' days × 0.05%/day (edit method to change daily %)'}
+    const total=principal+fee;
+    return{principal,calendarDays,overdueDays,grace,fee,total,detail,method}
+  }
+  function text(){
+    const c=calc(),cur=$('currency').value.trim()||'USD';
+    return ['LATE FEE / INTEREST SUMMARY','Invoice #: '+($('invNo').value.trim()||'(not set)'),'Freelancer: '+($('freelancer').value.trim()||'(not set)'),'Client: '+($('client').value.trim()||'(not set)'),'Currency: '+cur,'','Principal unpaid: '+money(c.principal,cur),'Original due date: '+($('dueDate').value||'(not set)'),'As-of date: '+($('asOf').value||'(not set)'),'Calendar days past due: '+c.calendarDays,'Grace (days): '+c.grace,'Overdue days (after grace): '+c.overdueDays,'','Method: '+methodLabel(c.method),'Rate / fee input: '+($('rate').value||'0'),'Detail: '+c.detail,'','Estimated late fee / interest: '+money(c.fee,cur),'Estimated amount due: '+money(c.total,cur),'','Notes:',$('notes').value.trim()||'(none)','','Template from Client Close Kit — not legal or tax advice. Verify contract & local law before charging.'].join('\n')
+  }
+  function renderPreview(){
+    const c=calc(),cur=$('currency').value.trim()||'USD';
+    $('out').innerHTML='<div class="preview-head"><div><h3>LATE FEE SUMMARY</h3><small>Overdue invoice estimate</small></div><div><strong>'+esc($('invNo').value||'INV')+'</strong><br><small>As of: '+esc($('asOf').value||'—')+'</small></div></div><p><small>Freelancer</small><br>'+esc($('freelancer').value||'—')+'</p><p><small>Client</small><br>'+esc($('client').value||'—')+'</p><p><small>Due date → as-of</small><br>'+esc($('dueDate').value||'—')+' → '+esc($('asOf').value||'—')+'<br><small>'+c.calendarDays+' calendar days · grace '+c.grace+' · <strong>'+c.overdueDays+' overdue days</strong></small></p><p><small>Method</small><br>'+esc(methodLabel(c.method))+'<br><small>'+esc(c.detail)+'</small></p><div class="totals"><div><small>Principal</small><strong>'+esc(money(c.principal,cur))+'</strong></div><div><small>Late fee / interest</small><strong>'+esc(money(c.fee,cur))+'</strong></div><div><small>Estimated total due</small><strong>'+esc(money(c.total,cur))+'</strong></div><div><small>Rate input</small><strong>'+esc($('rate').value||'0')+'</strong></div></div><p style="margin-top:16px"><small>'+esc($('notes').value||'')+'</small></p><p style="margin-top:12px"><small>Prepared with Client Close Kit. Confirm contract terms and local law before charging fees.</small></p>'
+  }
+  $('method').addEventListener('change',()=>{updateHint();renderPreview()});
+  $('gen').onclick=()=>{renderPreview();flash('Preview updated')};$('save').onclick=()=>{persist();flash('Saved locally')};$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(text());flash('Copied text')}catch(e){flash('Copy unavailable — use TXT download')}};$('txt').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text()],{type:'text/plain'}));a.download=($('invNo').value||'late-fee')+'-calc.txt';a.click();URL.revokeObjectURL(a.href)};$('print').onclick=()=>{renderPreview();window.print()};$('clear').onclick=()=>{if(confirm('Clear this late-fee draft?')){localStorage.removeItem(KEY);location.reload()}};
+  fields.forEach(k=>$(k).addEventListener('input',()=>renderPreview()));
+  updateHint();renderPreview();
+})();
+</script>
+</body>
+</html>
