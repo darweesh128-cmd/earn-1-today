@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Free Receipt Generator — Client Close Kit</title>
+<meta name="description" content="Create a browser-only freelance payment receipt with line items, tax, payment method, and notes. Print or save as PDF. No signup, no backend."/>
+<link rel="canonical" href="https://darweesh128-cmd.github.io/client-close-kit/receipt-generator.html"/>
+<meta property="og:title" content="Free Receipt Generator — Client Close Kit"/>
+<meta property="og:description" content="Create and print a simple freelance payment receipt in your browser. No signup or backend."/>
+<meta property="og:url" content="https://darweesh128-cmd.github.io/client-close-kit/receipt-generator.html"/>
+<style>
+:root{--bg:#0f1419;--card:#1a2332;--text:#e7ecf3;--muted:#9aa7b8;--accent:#3d9cf0;--ok:#3ecf8e;--line:#2a384c;--warn:#f0b429;--danger:#ff8a9a}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+main{max-width:920px;margin:0 auto;padding:24px 16px 48px}h1{font-size:1.45rem;margin:0 0 8px}h2{font-size:1.05rem;margin:0 0 10px}.lead{color:var(--muted);margin:0 0 20px}.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.line-form{display:grid;grid-template-columns:1.8fr .55fr .8fr auto;gap:10px;align-items:end}@media(max-width:760px){.row,.row3,.line-form{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}input,textarea,select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#121a24;color:var(--text);font:inherit}textarea{min-height:80px;resize:vertical}
+button{margin-top:14px;background:var(--accent);color:#041018;border:0;border-radius:8px;padding:10px 16px;font-weight:650;cursor:pointer}button.secondary{background:var(--line);color:var(--text);margin-left:8px}button.danger{background:#4a2030;color:#ffb4c0;margin-left:8px}button.tiny{margin-top:0;padding:8px 10px;font-size:.8rem}
+a{color:var(--accent)}.tip{color:var(--muted);font-size:.84rem}.ok{color:var(--ok);font-size:.9rem;margin-left:8px}.warn{background:#2a2410;border:1px solid #5a4a18;color:#f0d78c;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+.preview{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:18px;min-height:360px;white-space:normal}.preview h3{margin:0 0 4px;font-size:1.25rem}.preview-head{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}.preview small{color:var(--muted)}.preview table{width:100%;border-collapse:collapse;margin-top:12px}.preview th,.preview td{text-align:left;padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}.preview th{color:var(--muted);font-size:.78rem}.preview .paid-stamp{display:inline-block;margin-top:10px;padding:4px 10px;border:2px solid var(--ok);color:var(--ok);border-radius:6px;font-weight:700;font-size:.9rem;letter-spacing:.04em}.empty{color:var(--muted);padding:8px 0}.line-table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:12px}.line-table th,.line-table td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}.line-table th{color:var(--muted);font-size:.78rem}.totals{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}.totals div{background:#121a24;border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:140px}.totals strong{display:block;font-size:1.2rem;color:var(--ok)}.totals span{font-size:.78rem;color:var(--muted)}footer{margin-top:24px;color:var(--muted);font-size:.85rem}
+@media print{body{background:#fff;color:#000}main{max-width:none;padding:0}.card{background:#fff;padding:0;border:0}.lead,button,footer,.tip,#formCard,#entryCard,#actions,.warn{display:none}.preview{border:0;background:#fff;color:#000;padding:0}.preview small,.preview th{color:#555}.preview table,.preview th,.preview td{border-color:#ccc}.preview .paid-stamp{border-color:#0a7;color:#0a7}}
+</style>
+</head>
+<body>
+<main>
+<h1>Receipt generator</h1>
+<p class="lead">Create a simple freelance payment receipt: issuer, payer, related invoice, line items, tax, payment method, and notes. Print or save as PDF. Runs only in your browser. Template only — not tax or legal advice.</p>
+<div class="warn"><strong>Disclaimer:</strong> This educational template is not a tax invoice, official fiscal receipt, or legal advice. Confirm tax, VAT/GST, and recordkeeping requirements for your jurisdiction before relying on it.</div>
+<div class="card" id="formCard">
+  <h2>Receipt details</h2>
+  <div class="row"><div><label for="rcptNo">Receipt number</label><input id="rcptNo" value="RCPT-001"/></div><div><label for="rcptDate">Payment date</label><input id="rcptDate" type="date"/></div></div>
+  <div class="row"><div><label for="issuer">Issued by (you)</label><input id="issuer" value="Alex Rivera" placeholder="Your name or studio"/></div><div><label for="payer">Received from (client)</label><input id="payer" value="Acme Co." placeholder="Client or company"/></div></div>
+  <div class="row"><div><label for="invoiceRef">Related invoice # <span class="tip">(optional)</span></label><input id="invoiceRef" placeholder="INV-001"/></div><div><label for="method">Payment method</label><select id="method"><option>Bank transfer</option><option>PayPal</option><option>Card</option><option>Cash</option><option>Crypto</option><option>Other</option></select></div></div>
+  <label for="txnRef">Transaction / reference ID <span class="tip">(optional)</span></label><input id="txnRef" placeholder="Bank ref, PayPal txn, or card auth"/>
+</div>
+<div class="card" id="entryCard">
+  <h2>Line items (what was paid for)</h2>
+  <div class="line-form"><div><label for="liDesc">Description</label><input id="liDesc" placeholder="Service or deliverable"/></div><div><label for="liQty">Qty</label><input id="liQty" type="number" min="0" step="0.01" value="1"/></div><div><label for="liPrice">Unit price</label><input id="liPrice" type="number" min="0" step="0.01" value="0"/></div><div><button type="button" class="tiny" id="addLine">Add</button></div></div>
+  <p class="tip" style="margin-top:10px">Add what the payment covered, then set tax if needed. Data stays in <strong>localStorage</strong> on this device.</p>
+  <div id="tableWrap"><p class="empty">No line items yet — add one above.</p></div>
+  <div class="row" style="margin-top:8px"><div><label for="tax">Tax %</label><input id="tax" type="number" min="0" step="0.01" value="0"/></div><div><label for="currency">Currency label</label><input id="currency" value="USD" placeholder="USD"/></div></div>
+  <div class="totals" id="totals"></div>
+</div>
+<div class="card"><h2>Notes</h2><label for="notes">Notes / thank-you message</label><textarea id="notes" placeholder="Thank you for your payment. Partial payment notes, remaining balance, or other details."></textarea></div>
+<div class="card" id="actions">
+  <h2>Preview &amp; export</h2>
+  <button type="button" id="gen">Update preview</button><button type="button" class="secondary" id="save">Save draft</button><button type="button" class="secondary" id="copy">Copy text</button><button type="button" class="secondary" id="txt">Download TXT</button><button type="button" class="secondary" id="print">Print / save PDF</button><button type="button" class="danger" id="clear">Clear all</button>
+  <span id="msg" class="ok" hidden>Saved locally</span>
+  <p class="tip" style="margin-top:12px">Pair with the free <a href="invoice-generator.html">invoice generator</a>, <a href="payment-reminder.html">payment reminder</a>, and <a href="statement-of-account.html">statement of account</a>. Support the kit via <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me/MohammedAldarwesh</a>.</p>
+</div>
+<div class="card"><h2>Receipt preview</h2><div class="preview" id="out"></div></div>
+<footer>Free tool from <a href="./">Client Close Kit</a> · MIT · No signup · No backend · <a href="https://github.com/darweesh128-cmd/client-close-kit">Source</a> · Tips: <a href="https://www.paypal.com/paypalme/MohammedAldarwesh/1" target="_blank" rel="noopener">PayPal.me</a></footer>
+</main>
+<script>
+(function(){
+  const KEY='cck-receipt-generator-v1',$=id=>document.getElementById(id),today=()=>new Date().toISOString().slice(0,10);
+  const fields=['rcptNo','rcptDate','issuer','payer','invoiceRef','method','txnRef','tax','currency','notes'];let lines=[];
+  $('rcptDate').value=today();
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s){fields.forEach(k=>{if(s[k]!=null)$(k).value=s[k]});if(Array.isArray(s.lines))lines=s.lines}}catch(e){}
+  let nextId=lines.reduce((m,l)=>Math.max(m,l.id||0),0)+1;
+  function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function money(n){return Number(n||0).toFixed(2)}
+  function cur(){return ($('currency').value.trim()||'USD')}
+  function persist(){const d={};fields.forEach(k=>d[k]=$(k).value);d.lines=lines;localStorage.setItem(KEY,JSON.stringify(d))}
+  function flash(t){$('msg').hidden=false;$('msg').textContent=t;setTimeout(()=>{$('msg').hidden=true},1500)}
+  function subtotal(){return lines.reduce((s,l)=>s+(Number(l.qty)||0)*(Number(l.price)||0),0)}
+  function renderTable(){
+    if(!lines.length){$('tableWrap').innerHTML='<p class="empty">No line items yet — add one above.</p>'}
+    else{$('tableWrap').innerHTML='<table class="line-table"><thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Amount</th><th></th></tr></thead><tbody>'+lines.map(l=>'<tr><td>'+esc(l.desc)+'</td><td>'+esc(l.qty)+'</td><td>'+money(l.price)+'</td><td>'+money((Number(l.qty)||0)*(Number(l.price)||0))+'</td><td><button type="button" class="tiny danger" data-del="'+l.id+'">Remove</button></td></tr>').join('')+'</tbody></table>';Array.from($('tableWrap').querySelectorAll('[data-del]')).forEach(b=>b.onclick=()=>{lines=lines.filter(l=>String(l.id)!==b.dataset.del);persist();renderAll();flash('Removed')})}
+    const sub=subtotal(),tax=sub*Number($('tax').value||0)/100,total=sub+tax,c=cur();
+    $('totals').innerHTML='<div><span>Subtotal ('+esc(c)+')</span><strong>'+money(sub)+'</strong></div><div><span>Tax ('+money($('tax').value||0)+'%)</span><strong>'+money(tax)+'</strong></div><div><span>Amount received</span><strong>'+money(total)+'</strong></div>';
+  }
+  function text(){const sub=subtotal(),tax=sub*Number($('tax').value||0)/100,total=sub+tax,c=cur();return ['PAYMENT RECEIPT','Receipt number: '+($('rcptNo').value.trim()||'(not set)'),'Payment date: '+($('rcptDate').value||'(not set)'),'Related invoice: '+($('invoiceRef').value.trim()||'(none)'),'','ISSUED BY',$('issuer').value.trim()||'(not specified)','','RECEIVED FROM',$('payer').value.trim()||'(not specified)','','Payment method: '+($('method').value||'(not specified)'),'Transaction ref: '+($('txnRef').value.trim()||'(none)'),'','LINE ITEMS',...(lines.length?lines.map((l,i)=>(i+1)+'. '+(l.desc||'(unnamed)')+' — '+l.qty+' × '+money(l.price)+' = '+money((Number(l.qty)||0)*(Number(l.price)||0))):['(none)']),'','Subtotal ('+c+'): '+money(sub),'Tax ('+($('tax').value||0)+'%): '+money(tax),'AMOUNT RECEIVED ('+c+'): '+money(total),'','NOTES',$('notes').value.trim()||'(none)','','Status: PAID IN FULL (as recorded)','','This is a template, not tax or legal advice.'].join('\n')}
+  function renderPreview(){const sub=subtotal(),tax=sub*Number($('tax').value||0)/100,total=sub+tax,c=cur();const rows=lines.length?lines.map(l=>'<tr><td>'+esc(l.desc||'(unnamed)')+'</td><td>'+esc(l.qty)+'</td><td>'+money(l.price)+'</td><td>'+money((Number(l.qty)||0)*(Number(l.price)||0))+'</td></tr>').join(''):'<tr><td colspan="4" class="empty">No line items added.</td></tr>';$('out').innerHTML='<div class="preview-head"><div><h3>PAYMENT RECEIPT</h3><small>Freelance services / deliverables</small><div class="paid-stamp">PAID</div></div><div><strong>'+esc($('rcptNo').value||'RCPT-001')+'</strong><br><small>Date: '+esc($('rcptDate').value||'—')+'</small>'+($('invoiceRef').value.trim()?'<br><small>Invoice: '+esc($('invoiceRef').value)+'</small>':'')+'</div></div><div class="row"><div><small>ISSUED BY</small><br>'+esc($('issuer').value||'—')+'</div><div><small>RECEIVED FROM</small><br>'+esc($('payer').value||'—')+'</div></div><p><small>Payment method</small><br>'+esc($('method').value||'—')+($('txnRef').value.trim()?'<br><small>Ref: '+esc($('txnRef').value)+'</small>':'')+'</p><table><thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Amount</th></tr></thead><tbody>'+rows+'</tbody></table><div style="margin-left:auto;max-width:270px;margin-top:14px"><div style="display:flex;justify-content:space-between"><span>Subtotal ('+esc(c)+')</span><strong>'+money(sub)+'</strong></div><div style="display:flex;justify-content:space-between"><span>Tax ('+money($('tax').value||0)+'%)</span><strong>'+money(tax)+'</strong></div><div style="display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:7px;margin-top:7px"><strong>AMOUNT RECEIVED</strong><strong>'+money(total)+' '+esc(c)+'</strong></div></div><p><strong>Notes</strong><br>'+esc($('notes').value||'—').replace(/\n/g,'<br>')+'</p><p style="margin-top:16px"><small>Prepared with Client Close Kit. Verify tax and recordkeeping requirements before relying on this form.</small></p>'}
+  function renderAll(){renderTable();renderPreview()}
+  $('addLine').onclick=()=>{const desc=$('liDesc').value.trim(),qty=Number($('liQty').value),price=Number($('liPrice').value);if(!desc){flash('Add a description');return}if(!Number.isFinite(qty)||qty<0||!Number.isFinite(price)||price<0){flash('Check quantity and price');return}lines.push({id:nextId++,desc,qty,price});persist();renderAll();$('liDesc').value='';$('liQty').value='1';$('liPrice').value='0';flash('Added')};
+  $('gen').onclick=()=>{renderAll();flash('Preview updated')};$('save').onclick=()=>{persist();flash('Saved locally')};$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(text());flash('Copied text')}catch(e){flash('Copy unavailable — use TXT download')}};$('txt').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text()],{type:'text/plain'}));a.download=($('rcptNo').value||'receipt')+'.txt';a.click();URL.revokeObjectURL(a.href)};$('print').onclick=()=>{renderPreview();window.print()};$('clear').onclick=()=>{if(confirm('Clear this receipt and all line items?')){localStorage.removeItem(KEY);location.reload()}};
+  fields.forEach(k=>$(k).addEventListener('input',()=>{renderPreview();if(k==='tax'||k==='currency')renderTable()}));renderAll();
+})();
+</script>
+</body>
+</html>
